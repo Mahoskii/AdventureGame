@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Generic Fantasy Adventure Game Title</title>
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cinzel">
+	<link rel="stylesheet" type="text/css" href="startover.css">
+</head>
+<body>
+
+	<!-- STARTING TITLE -->
+
+	<div id="title" class="titleDiv titleArea ">
+		<h1 class="titles">Generic Fantasy Adventure Game Title</h1>
+	</div>
+
+	<!-- THE START BUTTON -->
+
+	<div id="startButton" class="titleDiv buttonStartArea ">
+		<button class="buttons" id="startA">Start Adventure</button>
+	</div>
+
+	<!-- INFORMATION PAGE BUTTONS -->
+
+	<div id="gameInfo" class="gameInfoDiv smallSize buttonSideArea invis">
+		<button class="buttons" id="createYC">Create your Character</button>
+		<button class="buttons" id="theStoryBtn">The Story</button>
+		<button class="buttons" id="back1">Back</button>
+		<button class="buttons" id="credits">Credits</button>
+	</div>
+
+	<!-- TITLE AND BACK BUTTON FOR THE CLASS CHOOSING PAGE -->
+
+	<div id="classPageTitle" class="titleArea invis">
+		<h1 class="pagetitle">Choose your Class</h1>
+			<p class="">
+				<strong>Please choose the class you wish to play as from the 6 available classes. Click on the class name to receive information about it. Once you have chosen the class you want, please click the -SELCET- button on the respective class's information page.</strong>
+			</p>
+	</div>
+
+	<nav id="classPageBB" class="navArea invis">
+		<button class="buttons" id="back2">Back</button>
+	</nav>
+
+	<!-- CLASS PAGE BUTTONS -->
+
+	<div id="allClasses" class="gameInfoDiv bigSize buttonSideArea invis">
+		<button class="buttons" id="warrior">Warrior</button>
+		<button class="buttons" id="rogue">Rogue</button>
+		<button class="buttons" id="ranger">Ranger</button>
+		<button class="buttons" id="bard">Bard</button>
+		<button class="buttons" id="cleric">Cleric</button>
+		<button class="buttons" id="wizard">Wizard</button>
+	</div>
+
+	<!-- TITLE, BACK BUTTON AND STATS FORM FOR THE STATS CHOOSING PAGE -->
+
+	<div id="statsPageTitle" class="titleArea invis">
+		<h1 class="pagetitle">Allocate your stats</h1>
+			<p class="">
+				<strong>Please allocate your character's stats. To proceed ALL points must be used.Stats can only be allocated using the arrow buttons displayed on the screen. The number of points available is presented above the stats list and information about each stat can be seen on the right side of the screen. </strong>
+			</p>
+	</div>
+
+	<nav id="statsPageBB" class="navArea invis">
+		<button class="buttons" id="back3">Back</button>
+	</nav>
+
+	<div id=statsForm class="buttonSideArea statsFormClass bigSize invis">
+
+		<!-- STATS TITLE -->
+
+		<div id="statsTitleSection" class="">
+			<h2>Stats:</h2>
+		</div>
+
+		<!-- STATS NUMBER POOL -->
+
+		<div id="statsPointPool" class="statsPointPoolC">
+			<form>	
+				<label for="statNum"><strong>Available Points:</strong></label>
+
+		  	<input type="number" id="statNum" name="statNum"  min="0" max="10" placeholder="10" value="10" disabled>
+		  </form>
+		  <h3 id="noPoints" class="invis">You are out of points.</h3>
+	  </div>
+
+	  <!-- ALL STATS -->
+		
+		<div id="statsFormSection" class="statsFormSectionC">
+			<form>
+	  		<div id="statsShowArea" class="statsplacing">
+
+	  			<!-- STATS TEXT SIDE -->
+
+		  		<div id="statsTextSide" class="statsTextSideC">
+		  			<label for="str">Strength:</label>
+		  			<label for="dex">Dexterity:</label>
+		  			<label for="con">Constitution:</label>
+		  			<label for="int">Intelligence:</label>
+		  			<label for="wis">Wisdom:</label>
+		  			<label for="cha">Charisma:</label>
+		  		</div>
+
+		  		<!-- STATS BOXES SIDE -->
+
+		  		<div id="statsBoxesSide" class="statsBoxesSideC">
+		  			<input type="number" id="str" name="str" min="5" max="15" placeholder="5" value="5">
+		  			<input type="number" id="dex" name="dex" min="5" max="15" placeholder="5" value="5">
+			  		<input type="number" id="con" name="con" min="5" max="15" placeholder="5" value="5">
+			  		<input type="number" id="int" name="int" min="5" max="15" placeholder="5" value="5">
+			  		<input type="number" id="wis" name="wis" min="5" max="15" placeholder="5" value="5">
+			  		<input type="number" id="cha" name="cha" min="5" max="15" placeholder="5" value="5">
+		  		</div>
+	  		</div>
+			</form>
+		</div>
+
+		<!-- STATS CONFIRM BUTTON -->
+
+		<div id="statsConfirmBtn" class="">
+			<button id="resetBTN1" class="selectbtn">Reset Points</button>
+			<!-- <button id="changeStat" class="selectbtn">Change</button> -->
+			<button id="confirmBTN1" class="selectbtn">Confirm</button>
+		</div>	
+	</div>
+
+	<!-- TITLE, BACK BUTTON AND SKILLS TREE FOR THE SKILLS CHOOSING PAGE -->
+
+	<div id="skillsPageTitle" class="titleArea invis">
+		<h1 class="pagetitle">Choose your Skills</h1>
+			<p class="">
+				<strong>Please select your character's skills. The number of points avialble and information about the skills can be seen on the right side of the screen. Hover above the skill to view information about it, click on it to select it and click on it again to deselect it. ALL points must be spent in order to continue.</strong>
+			</p>
+	</div>
+
+	<nav id="skillsPageBB" class="navArea invis">
+		<button class="buttons" id="back4">Back</button>
+	</nav>
+
+	<nav id="sPoints" class="skillPointArea invis">
+		<form id="sPointsForm" class="">
+			<label for="skillPoints">Points Remaining:</label>
+			<input type="number" id="skillPoints" name="skillPoints" class="points" min="0" max="3" placeholder="3" value="3" disabled>
+		</form>
+		<h3 id="noPoints2" class="invis">You are out of points.</h3>
+	</nav>
+
+	<div id="skillTree" class="bigSize buttonSideArea invis">
+
+		<div class="selectionOptions">
+			<div id="skill1Div">
+				<img id="skill1img" src="" width="100" height="100">
+				<!-- <p>Skill Name 1</p> -->
+				<button id="skill1btn" class="selectbtn" value=""></button>
+			</div>
+
+			<div id="skill2Div">
+				<img id="skill2img" src="" width="100" height="100">
+				<!-- <p>Skill Name 2</p> -->
+				<button id="skill2btn" class="selectbtn" value=""></button>
+			</div>
+
+			<div id="skill3Div">
+				<img id="skill3img" src="" width="100" height="100">
+				<!-- <p>Skill Name 3</p> -->
+				<button id="skill3btn" class="selectbtn" value=""></button>
+			</div>
+
+			<div id="skill4Div">
+				<img id="skill4img" src="" width="100" height="100">
+				<!-- <p>Skill Name 4</p> -->
+				<button id="skill4btn" class="selectbtn" value=""></button>
+			</div>
+
+			<div id="skill5Div">
+				<img id="skill5img" src="" width="100" height="100">
+				<!-- <p>Skill Name 5</p> -->
+				<button id="skill5btn" class="selectbtn" value=""></button>
+			</div>
+
+			<div id="skill6Div">
+				<img id="skill6img" src="" width="100" height="100">
+				<!-- <p>Skill Name 6</p> -->
+				<button id="skill6btn" class="selectbtn" value=""></button>
+			</div>
+		</div>
+
+		<div>
+			<button id="confirmBTN2" class="selectbtn">Confirm</button>
+		</div>	
+	</div>
+
+	<!-- TITLE, BLACK BUTTON AND CHARCTER ASPECTS FOR THE CHARACTER CUSTOMIZATION PAGE -->
+
+	<div id="characterCPageTitle" class="titleArea invis">
+		<h1 class="pagetitle">Customize your Character</h1>
+		<p class="">
+			<strong>Please select your characters appearance and name.</strong>
+		</p>
+	</div>
+
+	<nav id="characterCPageBB" class="navArea invis">
+		<button class="buttons" id="back5">Back</button>
+	</nav>
+
+	<nav id="yourName" class="skillPointArea invis">
+		<form id="nameForm" class="invis">
+			<label for="name">Enter Your Name:</label>
+			<input type="text" autocomplete="off" id="name" name="name" class="chaName" minlength="1" maxlength="15" placeholder="Your Name Here">
+		</form>
+	</nav>
+
+	<div id="chaLooks" class="bigSize buttonSideArea invis">
+
+		<div class="selectionOptions">
+			<div>
+				<button id="imgBtn1" class="imgLooks chosen" value="1"><img src="Characters/Hero/timur-m-SAKLELG-pO8-unsplash.jpg" id="playerImg1" width="150" height="150"></button>
+				<p>1</p>
+			</div>
+
+			<div>
+				<button id="imgBtn2" class="imgLooks" value="2"><img src="Characters/Hero/ray-zhuang-Px2Y-sio6-c-unsplash.jpg" id="playerImg2" width="150" height="150"></button>
+				<p>2</p>
+			</div>
+
+			<div>
+				<button id="imgBtn3" class="imgLooks" value="3"><img src="Characters/Hero/avel-chuklanov-GNVn_4bC2kk-unsplash.jpg" id="playerImg3" width="150" height="150"></button>
+				<p>3</p>
+			</div>
+
+			<div>
+				<button id="imgBtn4" class="imgLooks" value="4"><img src="Characters/Hero/bryan-debin-nH2tftGLScs-unsplash.jpg" id="playerImg4" width="150" height="150"></button>
+				<p>4</p>
+			</div>
+
+			<div>
+				<button id="imgBtn5" class="imgLooks" value="5"><img src="Characters/Hero/nihal-karkala--vcg9-w_yMk-unsplash.jpg" id="playerImg5" width="150" height="150"></button>
+				<p>5</p>
+			</div>
+
+			<div>
+				<button id="imgBtn6" class="imgLooks" value="6"><img src="Characters/Hero/leonsa-fVNyjet1CXY-unsplash.jpg" id="playerImg6" width="150" height="150"></button>
+				<p>6</p>
+			</div>
+		</div>
+
+		<div>
+			<button id="confirmBTN3" class="selectbtn">Confirm</button>
+		</div>	
+	</div>
+
+
+	<!-- TITLE, BACK BUTTON AND PARTY SELECTION PAGE -->
+
+	<div id="partyPageTitle" class="titleArea invis">
+		<h1 class="pagetitle">Select your Party</h1>
+			<p class="">
+				<strong>Please select 3 party members to accompany you on your adventure. Information about each party member and the number of companion points available can be seen on the right side of the screen. ALL points must be used to continue.</strong>
+			</p>
+	</div>
+
+	<nav id="partyPageBB" class="navArea invis">
+		<button class="buttons" id="back6">Back</button>
+	</nav>
+
+	<nav id="cPoints" class="skillPointArea invis">
+		<form id="cPointsForm" class="invis">
+			<label for="companionPoints">Points Remaining:</label>
+			<input type="number" id="companionPoints" name="companionPoints" class="points" min="0" max="3" placeholder="3" value="3" disabled>
+		</form>
+	</nav>
+
+	<div id="partyCompanions" class="bigSize buttonSideArea invis">
+
+		<div class="selectionOptions">
+			<div id="comp1">
+				<button id="comp1btn" class="imgLooks" value="1"><img src="Characters/Party/raoul-droog-yMSecCHsIBc-unsplash.jpg" id="comp1img" width="150" height="150" alt="1"></button>
+				<p>Companion 1</p>
+			</div>
+
+			<div id="comp2">
+				<button id="comp2btn" class="imgLooks" value="2"><img src="Characters/Party/nicolas-picard-fNBrJ4nUVDk-unsplash.jpg" id="comp2img" width="150" height="150" alt="2"></button>
+				<p>Companion 2</p>
+			</div>
+
+			<div id="comp3">
+				<button id="comp3btn" class="imgLooks" value="3"><img src="Characters/Party/alex-nicolopoulos-hxn2HjZHyQE-unsplash.jpg" id="comp3img" width="150" height="150" alt="3"></button>
+				<p>Companion 3</p>
+			</div>
+
+			<div id="comp4">
+				<button id="comp4btn" class="imgLooks" value="4"><img src="Characters/Party/jae-park-7GX5aICb5i4-unsplash.jpg" id="comp4img" width="150" height="150" alt="4"></button>
+				<p>Companion 4</p>
+			</div>
+
+			<div id="comp5">
+				<button id="comp5btn" class="imgLooks" value="5"><img src="Characters/Party/jan-gustavsson-GAzMk0dpNUY-unsplash.jpg" id="comp5img" width="150" height="150" alt="5"></button>
+				<p>Companion 5</p>
+			</div>
+
+			<div id="comp6">
+				<button id="comp6btn" class="imgLooks" value="6"><img src="Characters/Party/karina-vorozheeva-rW-I87aPY5Y-unsplash.jpg" id="comp6img" width="150" height="150" alt="6"></button>
+				<p>Companion 6</p>
+			</div>
+		</div>
+
+		<div>
+			<button id="confirmBTN4" class="selectbtn">Confirm</button>
+		</div>	
+	</div>
+
+	<!-- PARTY SKILL AND STATS GAME DISPLAY -->
+
+	<div id="adventureB" class="titleArea invis">
+		<h1 class="pagetitle adventureBPage">Your Adventure Begins...</h1>
+	</div>
+	
+	<div id="allPartyCards" class="buttonSideArea invis">
+
+		<!-- HERO CARD -->
+
+		<div id="heroPartyCard" class="characterDiv">
+
+			<!-- HERO IMAGE -->
+
+  		<div id="heropartyImgDiv">
+  			<img id="heropartyImg" src="" width="150" height="150">
+  		</div>
+
+  		<!-- HERO INFO -->
+
+  		<div id="heroPartyInfo" class="charInfoDiv">
+  			<form>
+  				<!-- PCSP=party card stats placing -->
+  				<div id="heroPCSP" class="statsplacing">
+
+  					<!-- TITLE SIDE -->
+
+  					<div id="heroCardLabels" class="gridS">
+  						<label for="heroNameHere" class="cardInfo" >Name:</label>
+  						<label for="heroClassHere" class="cardInfo">Class:</label>
+  						<label for="heroHPHere" class="cardInfo">Health:</label>
+  						<label for="heroAPHere" class="cardInfo">AP:</label>
+  						<label for="heroSkillsHere" class="cardInfo">Skills:</label>
+  					</div>
+
+  					<!-- INFO SIDE -->
+
+  					<div id="heroCardInput" class="gridS">
+  						<!-- <input type="text" id="heroNameHere" class="cardInfo" name="heroNameHere" placeholder="Hero Name" value="" readonly>
+			  			<input type="text" id="heroClassHere" class="cardInfo" name="heroClassHere" placeholder="Hero Class" readonly>
+			  			<input type="text" id="heroHPHere" class="cardInfo" name="heroHPHere" placeholder="100" readonly>
+			  			<input type="text" id="heroAPHere" class="cardInfo" name="heroAPHere" placeholder="10" readonly> -->
+			  			<label id="heroNameHere"></label>
+			  			<label id="heroClassHere"></label>
+			  			<label id="heroHPHere"></label>
+			  			<label id="heroAPHere"></label>
+			  			<select id="heroSkillsHere" class="cardInfo" name="heroSkillsHere">
+			  				<option id="hsOption1" value="skill1">Skill 1</option>
+			  				<option id="hsOption2" value="skill2">Skill 2</option>
+			  				<option id="hsOption3" value="skill3">Skill 3</option>
+			  			</select>
+  					</div>
+		  		</div>
+  			</form>
+  		</div>
+  	</div>
+
+  	<!-- FIRST PARTY MEMBER CARD -->
+
+  	<div id="partyMemberCard1" class="characterDiv">
+
+  		<!-- PARTY MEMBER ONE IMAGE -->
+
+  		<div id="partyMemberImg1Div">
+  			<img id="partyMemberImg1" src="" width="150" height="150">
+  		</div>
+
+  		<!-- PARTY MEMBER ONE INFO -->
+
+  	  <div id="partyMemberCard1" class="charInfoDiv">
+  		  <form>
+  				<!-- PCSP=party card stats placing -->
+  				<div id="member1PCSP" class="statsplacing">
+
+  					<!-- TITLE SIDE -->
+
+  					<div id="member1CardLabels" class="gridS">
+  						<label for="member1NameHere" class="cardInfo" >Name:</label>
+  						<label for="member1ClassHere" class="cardInfo">Class:</label>
+  						<label for="member1HPHere" class="cardInfo">Health:</label>
+  						<label for="member1APHere" class="cardInfo">AP:</label>
+  						<label for="member1SkillsHere" class="cardInfo">Skills:</label>
+  					</div>
+
+  					<!-- INFO SIDE -->
+
+  					<div id="member1CardInput" class="gridS">
+  						<!-- <input type="text" id="member1NameHere" class="cardInfo" name="member1NameHere" placeholder="Member 1 Name" readonly>
+			  			<input type="text" id="member1ClassHere" class="cardInfo" name="member1ClassHere" placeholder="Member 1 Class" readonly>
+			  			<input type="text" id="member1HPHere" class="cardInfo" name="member1HPHere" placeholder="100" readonly>
+			  			<input type="text" id="member1APHere" class="cardInfo" name="member1APHere" placeholder="10" readonly> -->
+			  			<label id="member1NameHere"></label>
+			  			<label id="member1ClassHere"></label>
+			  			<label id="member1HPHere"></label>
+			  			<label id="member1APHere"></label>
+			  			<select id="member1SkillsHere" class="cardInfo" name="member1SkillsHere">
+			  				<option id="cs1Option1" value="skill1">Skill 1</option>
+			  				<option id="cs1Option2" value="skill2">Skill 2</option>
+			  				<option id="cs1Option3" value="skill3">Skill 3</option>
+			  			</select>
+  					</div>
+		  		</div>
+  			</form>
+  		</div>
+  	</div>
+
+  	<!-- SECOND PARTY MEMBER CARD -->
+
+  	<div id="partyMemberCard2" class="characterDiv">
+
+  		<!-- PARTY MEMBER TWO IMAGE -->
+
+  		<div id="partyMemberImg2Div">
+  			<img id="partyMemberImg2" src="" width="150" height="150">
+  		</div>
+
+  		<!-- PARTY MEMBER TWO INFO -->
+
+  		<div id="partyMemberCard2" class="charInfoDiv">
+  		  <form>
+  				<!-- PCSP=party card stats placing -->
+  				<div id="member2PCSP" class="statsplacing">
+
+  					<!-- TITLE SIDE -->
+
+  					<div id="member2CardLabels" class="gridS">
+  						<label for="member2NameHere" class="cardInfo" >Name:</label>
+  						<label for="member2ClassHere" class="cardInfo">Class:</label>
+  						<label for="member2HPHere" class="cardInfo">Health:</label>
+  						<label for="member2APHere" class="cardInfo">AP:</label>
+  						<label for="member2SkillsHere" class="cardInfo">Skills:</label>
+  					</div>
+
+  					<!-- INFO SIDE -->
+
+  					<div id="member2CardInput" class="gridS">
+  					<!-- 	<input type="text" id="member2NameHere" class="cardInfo" name="member2NameHere" placeholder="Member 2 Name" readonly>
+			  			<input type="text" id="member2ClassHere" class="cardInfo" name="member2ClassHere" placeholder="Member 2 Class" readonly>
+			  			<input type="text" id="member2HPHere" class="cardInfo" name="member2HPHere" placeholder="100" readonly>
+			  			<input type="text" id="member2APHere" class="cardInfo" name="member2APHere" placeholder="10" readonly> -->
+			  			<label id="member2NameHere"></label>
+			  			<label id="member2ClassHere"></label>
+			  			<label id="member2HPHere"></label>
+			  			<label id="member2APHere"></label>
+			  			<select id="member2SkillsHere" class="cardInfo" name="member2SkillsHere">
+			  				<option id="cs2Option1" value="skill1">Skill 1</option>
+			  				<option id="cs2Option2" value="skill2">Skill 2</option>
+			  				<option id="cs2Option3" value="skill3">Skill 3</option>
+			  			</select>
+  					</div>
+		  		</div>
+  			</form>
+  		</div>
+  	</div>
+
+  	<!-- THIRD PARTY MEMBER CARD -->
+
+  	<div id="partyMemberCard3" class="characterDiv">
+
+  		<!-- PARTY MEMBER THREE IMAGE -->
+
+  		<div id="partyMemberImg3Div">
+  			<img id="partyMemberImg3" src="" width="150" height="150">
+  		</div>
+
+  		<!-- PARTY MEMBER THREE INFO -->
+
+  		<div id="partyMemberCard3" class="charInfoDiv">
+  		  <form>
+  				<!-- PCSP=party card stats placing -->
+  				<div id="member3PCSP" class="statsplacing">
+
+  					<!-- TITLE SIDE -->
+
+  					<div id="member3CardLabels" class="gridS">
+  						<label for="member3NameHere" class="cardInfo" >Name:</label>
+  						<label for="member3ClassHere" class="cardInfo">Class:</label>
+  						<label for="member3HPHere" class="cardInfo">Health:</label>
+  						<label for="member3APHere" class="cardInfo">AP:</label>
+  						<label for="member3SkillsHere" class="cardInfo">Skills:</label>
+  					</div>
+
+  					<!-- INFO SIDE -->
+
+  					<div id="member3CardInput" class="gridS">
+  					<!-- 	<input type="text" id="member3NameHere" class="cardInfo" name="member3NameHere" placeholder="Member 3 Name" readonly>
+			  			<input type="text" id="member3ClassHere" class="cardInfo" name="member3ClassHere" placeholder="Member 3 Class" readonly>
+			  			<input type="text" id="member3HPHere" class="cardInfo" name="member3HPHere" placeholder="100" readonly>
+			  			<input type="text" id="member3APHere" class="cardInfo" name="member3APHere" placeholder="10" readonly> -->
+			  			<label id="member3NameHere"></label>
+			  			<label id="member3ClassHere"></label>
+			  			<label id="member3HPHere"></label>
+			  			<label id="member3APHere"></label>
+			  			<select id="member3SkillsHere" class="cardInfo" name="member3SkillsHere">
+			  				<option id="cs3Option1" value="skill1">Skill 1</option>
+			  				<option id="cs3Option2" value="skill2">Skill 2</option>
+			  				<option id="cs3Option3" value="skill3">Skill 3</option>
+			  			</select>
+  					</div>
+		  		</div>
+  			</form>
+  		</div>
+  	</div>
+	</div>
+
+	<!-- *************** INFORMATION DIV ***************  -->
+
+	<div id="infoDiv" class="gameInfoDiv  infoSideArea textinfo">
+
+		<!-- INFORMATION TITLE  -->
+
+		<div id="information" class=" invis">
+			<h2 class="infotitle">Information</h2>
+		</div>
+
+		<!-- THE STORY -->
+
+		<div id="theStoryInfo" class="invis">
+			<h2 class="infotitle">The Story</h2>
+
+			<div class="" id="theStoryTxt">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+
+		<!-- CREDITS -->
+
+		<div id="creditsInfo" class="invis">
+			<h2 class="infotitle">Credits</h2>
+
+			<div class="" id="creditsTxt">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+
+		<!-- ALL SIX CLASSES -->
+
+		<div id="allClassesInfo" class="invis">
+
+			<div class="invis" id="warriorInfo">
+				<h2 class="roletitle">The Warrior</h2>
+				<p class="pstyle">
+					<strong>The warrior is a melee combatant that can wield a wide range of melee weapons, from swords and shields to broadswords and spears. Excels at front line combat and sustainability.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Preferable stats: Strength & Stamina.</strong>
+				</p>
+				<div>
+					<button id="selectbtn1" class="selectbtn" value="Warrior">Select</button>
+				</div>	
+			</div>
+
+			<div class="invis" id="rogueInfo">
+				<h2 class="roletitle">The Rogue</h2>
+				<p class="pstyle">
+					<strong>The Rogue is...</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Preferable stats: .</strong>
+				</p>
+				<div>
+					<button id="selectbtn2" class="selectbtn" value="Rogue">Select</button>
+				</div>	
+			</div>
+
+			<div class="invis" id="rangerInfo">
+				<h2 class="roletitle">The Ranger</h2>
+				<p class="pstyle">
+					<strong>The Ranger is...</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Preferable stats:</strong>
+				</p>
+				<div>
+					<button id="selectbtn3" class="selectbtn" value="Ranger">Select</button>
+				</div>	
+			</div>
+
+			<div class="invis" id="bardInfo">
+				<h2 class="roletitle">The Bard</h2>
+				<p class="pstyle">
+					<strong>The bard is...</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Preferable stats: .</strong>
+				</p>
+				<div>
+					<button id="selectbtn4" class="selectbtn" value="Bard">Select</button>
+				</div>	
+			</div>
+
+			<div class="invis" id="clericInfo">
+				<h2 class="roletitle">The Cleric</h2>
+				<p class="pstyle">
+					<strong>The cleric is...</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Preferable stats: .</strong>
+				</p>
+				<div>
+					<button id="selectbtn5" class="selectbtn" value="Cleric">Select</button>
+				</div>	
+			</div>
+
+			<div class="invis" id="wizardInfo">
+				<h2 class="roletitle">The Wizard</h2>
+				<p class="pstyle">
+					<strong>The wizard is...</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Preferable stats: .</strong>
+				</p>
+				<div>
+					<button id="selectbtn6" class="selectbtn" value="Wizard">Select</button>
+				</div>	
+			</div>
+		</div>
+
+		<!-- STATS INFORMATION -->
+
+		<div id="statInfo" class="invis">
+			<h2 class="roletitle">Stat Information</h2>
+
+			<div id="strDiv">
+				<h3>Strength:</h3>
+				<p>
+					
+				</p>
+			</div>
+
+			<div id="dexDiv">
+				<h3>Dexterity:</h3>
+				<p>
+					
+				</p>
+			</div>
+
+			<div id="conDiv">
+				<h3>Constitution:</h3>
+				<p>
+					
+				</p>
+			</div>
+
+			<div id="intDiv">
+				<h3>Intelligence:</h3>
+				<p>
+					
+				</p>
+			</div>
+
+			<div id="wisDiv">
+				<h3>Wisdom:</h3>
+				<p>
+					
+				</p>
+			</div>
+
+			<div id="chaDiv">
+				<h3>Charisma:</h3>
+				<p>
+					
+				</p>
+			</div>
+		</div>
+
+		<!-- SKILL INFORMATION -->
+
+		<div id="skillsInfo" class=" ">
+
+			<div class="invis" id="skill1Info">
+				<h2 class="">Skill Name 1</h2>
+				<p class="pstyle">
+					<strong>This Skill Does Some Shit, Use it Wisely</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="skill2Info">
+				<h2 class="">Skill Name 2</h2>
+				<p class="pstyle">
+					<strong>This Skill Does Some Shit, Use it Wisely</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="skill3Info">
+				<h2 class="">Skill Name 3</h2>
+				<p class="pstyle">
+					<strong>This Skill Does Some Shit, Use it Wisely</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="skill4Info">
+				<h2 class="">Skill Name 4</h2>
+				<p class="pstyle">
+					<strong>This Skill Does Some Shit, Use it Wisely</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="skill5Info">
+				<h2 class="">Skill Name 5</h2>
+				<p class="pstyle">
+					<strong>This Skill Does Some Shit, Use it Wisely</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="skill6Info">
+				<h2 class="">Skill Name 6</h2>
+				<p class="pstyle">
+					<strong>This Skill Does Some Shit, Use it Wisely</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				</p>
+			</div>
+		</div>
+
+		<!-- CHARACTER INFORMATION -->
+
+		<div id="charInfoArea" class="invis">
+			<h3 id="userName">Name:</h3>
+			<h3 id="userClass"></h3>
+			<h3 id="userLooks"></h3>
+			<p><h3><u>Stats:</u></h3>
+				 <h4 id="userStr"></h4>
+				 <h4 id="userDex"></h4>
+				 <h4 id="userCon"></h4>
+				 <h4 id="userInt"></h4>
+				 <h4 id="userWis"></h4>
+				 <h4 id="userCha"></h4>
+			</p>
+			<p><h3>Skills:</h3>
+				<ul>
+					<li id="userSkill1"></li>
+					<li id="userSkill2"></li>
+					<li id="userSkill3"></li>
+				</ul>
+			</p>
+		</div>
+
+		<!-- COMPANION INFORMATION -->
+
+		<div id="companionInfo" class="invis">
+
+			<div class="invis" id="companion1Info">
+				<h2 class="">Companion Name 1</h2>
+				<p class="pstyle">
+					<strong>This Companion is Supposed to Have a Personality. Maybe it Will Maybe it Won't.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Skills:<br>This Companion has Some Cool Skills that You Don't!</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="companion2Info">
+				<h2 class="">Companion Name 2</h2>
+				<p class="pstyle">
+					<strong>This Companion is Supposed to Have a Personality. Maybe it Will Maybe it Won't.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Skills:<br>This Companion has Some Cool Skills that You Don't!</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="companion3Info">
+				<h2 class="">Companion Name 3</h2>
+				<p class="pstyle">
+					<strong>This Companion is Supposed to Have a Personality. Maybe it Will Maybe it Won't.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Skills:<br>This Companion has Some Cool Skills that You Don't!</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="companion4Info">
+				<h2 class="">Companion Name 4</h2>
+				<p class="pstyle">
+					<strong>This Companion is Supposed to Have a Personality. Maybe it Will Maybe it Won't.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Skills:<br>This Companion has Some Cool Skills that You Don't!</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="companion5Info">
+				<h2 class="">Companion Name 5</h2>
+				<p class="pstyle">
+					<strong>This Companion is Supposed to Have a Personality. Maybe it Will Maybe it Won't.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Skills:<br>This Companion has Some Cool Skills that You Don't!</strong>
+				</p>
+			</div>
+
+			<div class="invis" id="companion6Info">
+				<h2 class="">Companion Name 6</h2>
+				<p class="pstyle">
+					<strong>This Companion is Supposed to Have a Personality. Maybe it Will Maybe it Won't.</strong>
+				</p>
+				<p class="pstyle">
+					<strong>Skills:<br>This Companion has Some Cool Skills that You Don't!</strong>
+				</p>
+			</div>
+		</div>
+
+
+		<!-- GAME SCREEN -->
+
+		<div id="gameScreen" class="allGameScreen invis">
+
+			<!-- SCREEN (backGP= background position)-->
+
+			<div id="screenArea" class="backGP">
+				<img src="johannes-plenio-1vzLW-ihJaM-unsplash.jpg" width="750" height="500">
+
+				<div id="char1" class="charP">
+					<img src="Characters/Sprites/cat-pixel-art-pusheen-cat-dfa2f55fd83811d482b01d591331ec29.png" width="100" height="100">
+				</div>
+
+				<div id="char2" class="charP1">
+					<img src="Characters/Sprites/grumpy-cat-pusheen-gif-tenor-cat-a1817e64cc820a15992ebd249931fafe.png" width="80" height="80">
+				</div>
+
+				<div id="char3" class="charP2">
+					<img src="Characters/Sprites/cat-food-kitten-pusheen-tenor-cat-f2db61c5715958774464f46361baa363.png" width="80" height="80">
+				</div>
+
+				<div id="char4" class="charP3">
+					<img src="Characters/Sprites/pusheen-cat-telegram-sticker-clip-art-cat-90191b74176e1a890157acdb43b8aac3.png" width="100" height="100">
+				</div>
+
+				<div id="char5" class="charP4">
+					<img src="Characters/Sprites/pixel-art-bead-pattern-cute-ghost-ea58aeae627b8ea5ec3efb8ce9f43c18.png" width="80" height="80">
+				</div>
+
+			</div>
+
+			<!-- TEXT BOX -->
+
+			<div id="gameTextArea">
+				<!-- <p class="noMargin">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+
+				<p class="noMargin">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+
+				<p class="noMargin">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p> -->
+			</div>
+
+			<!-- INTERACTION BUTTONS -->
+
+			<div id="gameScreenBTN">
+				<button id="nextBTN" class="buttons nextbtns">Next</button>
+				<button id="nextBTN2" class="buttons nextbtns invis">Next</button>
+				<button id="nextBTN3" class="buttons nextbtns invis">Next</button>
+				<button id="nextBTN4" class="buttons nextbtns invis">Next</button>
+				<button id="nextBTN5" class="buttons nextbtns invis">Next</button>
+				<button id="nextBTN6" class="buttons nextbtns invis">Next</button>
+			</div>
+		</div>
+
+	</div>
+	
+	<script type="text/javascript" src="startover.js"></script>
+</body>
+</html>
