@@ -8,7 +8,7 @@
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Cinzel">
-	<link rel="stylesheet" type="text/css" href="startover.css">
+	<link rel="stylesheet" type="text/css" href="startover2.css">
 </head>
 <body>
 
@@ -20,13 +20,36 @@
 
 	<!-- THE START BUTTON -->
 
-	<div id="startButton" class="titleDiv buttonStartArea ">
+	<div id="startButton" class="titleDiv buttonStartArea">
 		<button class="buttons" id="startA">Start Adventure</button>
 	</div>
 
+	<!-- MUSIC -->
+	<header id="musicDiv" class="musicArea musical invis">
+		<audio id="aud" loop>
+			<source src="Music/Relaxing Green Nature - David Fesliyan.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+		</audio>
+		<button id="musicPly" class="musicbtn invis"> Play
+			<!-- <img src="" height="47px" width="47px"> -->
+		</button>
+		<button id="musicStp" class="musicbtn"> Pause
+			<!-- <img src="" height="47px" width="47px"> -->
+		</button>
+		<button id="musicMute" class="musicbtn"> Mute
+			<!-- <img src="" height="40px" width="40px"> -->
+		</button>
+		<button id="musicUnMute" class="musicbtn invis"> Unmute
+			<!-- <img src="" height="40px" width="40px"> -->
+		</button>
+		<!-- <img src="" height="35px" width="35px"> -->
+		<input  type="range" id="vol" name="vol" min="0" max="1" step="0.1">
+		<!-- <img src="" height="35px" width="35px"> -->
+	</header>
+
 	<!-- INFORMATION PAGE BUTTONS -->
 
-	<div id="gameInfo" class="gameInfoDiv smallSize buttonSideArea invis">
+	<div id="gameInfo" class="gameBtnDiv smallSize buttonSideArea invis">
 		<button class="buttons" id="createYC">Create your Character</button>
 		<button class="buttons" id="theStoryBtn">The Story</button>
 		<button class="buttons" id="back1">Back</button>
@@ -48,7 +71,7 @@
 
 	<!-- CLASS PAGE BUTTONS -->
 
-	<div id="allClasses" class="gameInfoDiv bigSize buttonSideArea invis">
+	<div id="allClasses" class="gameBtnDiv bigSize buttonSideArea btnGaps invis">
 		<button class="buttons" id="warrior">Warrior</button>
 		<button class="buttons" id="rogue">Rogue</button>
 		<button class="buttons" id="ranger">Ranger</button>
@@ -70,34 +93,34 @@
 		<button class="buttons" id="back3">Back</button>
 	</nav>
 
-	<div id=statsForm class="buttonSideArea statsFormClass bigSize invis">
+	<div id=statsForm class="buttonSideArea statsFormClass bigSize gridS invis">
 
 		<!-- STATS TITLE -->
 
 		<div id="statsTitleSection" class="">
-			<h2>Stats:</h2>
+			<h2 class="statH2">Stats:</h2>
 		</div>
 
 		<!-- STATS NUMBER POOL -->
 
-		<div id="statsPointPool" class="statsPointPoolC">
+		<div id="statsPointPool" class="">
 			<form>	
-				<label for="statNum"><strong>Available Points:</strong></label>
+				<label for="statNum">Available Points:</label>
 
-		  	<input type="number" id="statNum" name="statNum"  min="0" max="10" placeholder="10" value="10" disabled>
+		  	<input type="number" id="statNum" name="statNum"  min="0" max="10" placeholder="10" value="10" autocomplete="off" disabled>
 		  </form>
-		  <h3 id="noPoints" class="invis">You are out of points.</h3>
+		  <h3 id="noPoints" class="outOfPoints invis">You are out of points.</h3>
 	  </div>
 
 	  <!-- ALL STATS -->
 		
-		<div id="statsFormSection" class="statsFormSectionC">
+		<div id="statsFormSection" class="gridS">
 			<form>
-	  		<div id="statsShowArea" class="statsplacing">
+	  		<div id="statsShowArea" class="statsplacing gridS">
 
 	  			<!-- STATS TEXT SIDE -->
 
-		  		<div id="statsTextSide" class="statsTextSideC">
+		  		<div id="statsTextSide" class="statsGap gridS">
 		  			<label for="str">Strength:</label>
 		  			<label for="dex">Dexterity:</label>
 		  			<label for="con">Constitution:</label>
@@ -108,13 +131,13 @@
 
 		  		<!-- STATS BOXES SIDE -->
 
-		  		<div id="statsBoxesSide" class="statsBoxesSideC">
-		  			<input type="number" id="str" name="str" min="5" max="15" placeholder="5" value="5">
-		  			<input type="number" id="dex" name="dex" min="5" max="15" placeholder="5" value="5">
-			  		<input type="number" id="con" name="con" min="5" max="15" placeholder="5" value="5">
-			  		<input type="number" id="int" name="int" min="5" max="15" placeholder="5" value="5">
-			  		<input type="number" id="wis" name="wis" min="5" max="15" placeholder="5" value="5">
-			  		<input type="number" id="cha" name="cha" min="5" max="15" placeholder="5" value="5">
+		  		<div id="statsBoxesSide" class="statsGap gridS">
+		  			<input type="number" id="str" name="str" min="5" max="15" placeholder="5" value="5" autocomplete="off">
+		  			<input type="number" id="dex" name="dex" min="5" max="15" placeholder="5" value="5" autocomplete="off">
+			  		<input type="number" id="con" name="con" min="5" max="15" placeholder="5" value="5" autocomplete="off">
+			  		<input type="number" id="int" name="int" min="5" max="15" placeholder="5" value="5" autocomplete="off">
+			  		<input type="number" id="wis" name="wis" min="5" max="15" placeholder="5" value="5" autocomplete="off">
+			  		<input type="number" id="cha" name="cha" min="5" max="15" placeholder="5" value="5" autocomplete="off">
 		  		</div>
 	  		</div>
 			</form>
@@ -122,7 +145,7 @@
 
 		<!-- STATS CONFIRM BUTTON -->
 
-		<div id="statsConfirmBtn" class="">
+		<div id="statsConfirmBtn" class="statsplacing">
 			<button id="resetBTN1" class="selectbtn">Reset Points</button>
 			<!-- <button id="changeStat" class="selectbtn">Change</button> -->
 			<button id="confirmBTN1" class="selectbtn">Confirm</button>
@@ -145,9 +168,9 @@
 	<nav id="sPoints" class="skillPointArea invis">
 		<form id="sPointsForm" class="">
 			<label for="skillPoints">Points Remaining:</label>
-			<input type="number" id="skillPoints" name="skillPoints" class="points" min="0" max="3" placeholder="3" value="3" disabled>
+			<input type="number" id="skillPoints" name="skillPoints" class="points" min="0" max="3" placeholder="3" value="3" autocomplete="off" disabled>
 		</form>
-		<h3 id="noPoints2" class="invis">You are out of points.</h3>
+		<h3 id="noPoints2" class="outOfPoints invis">You are out of points.</h3>
 	</nav>
 
 	<div id="skillTree" class="bigSize buttonSideArea invis">
@@ -156,37 +179,37 @@
 			<div id="skill1Div">
 				<img id="skill1img" src="" width="100" height="100">
 				<!-- <p>Skill Name 1</p> -->
-				<button id="skill1btn" class="selectbtn" value=""></button>
+				<button id="skill1btn" class="selectbtn skillSelectbtn" value=""></button>
 			</div>
 
 			<div id="skill2Div">
 				<img id="skill2img" src="" width="100" height="100">
 				<!-- <p>Skill Name 2</p> -->
-				<button id="skill2btn" class="selectbtn" value=""></button>
+				<button id="skill2btn" class="selectbtn skillSelectbtn" value=""></button>
 			</div>
 
 			<div id="skill3Div">
 				<img id="skill3img" src="" width="100" height="100">
 				<!-- <p>Skill Name 3</p> -->
-				<button id="skill3btn" class="selectbtn" value=""></button>
+				<button id="skill3btn" class="selectbtn skillSelectbtn" value=""></button>
 			</div>
 
 			<div id="skill4Div">
 				<img id="skill4img" src="" width="100" height="100">
 				<!-- <p>Skill Name 4</p> -->
-				<button id="skill4btn" class="selectbtn" value=""></button>
+				<button id="skill4btn" class="selectbtn skillSelectbtn" value=""></button>
 			</div>
 
 			<div id="skill5Div">
 				<img id="skill5img" src="" width="100" height="100">
 				<!-- <p>Skill Name 5</p> -->
-				<button id="skill5btn" class="selectbtn" value=""></button>
+				<button id="skill5btn" class="selectbtn skillSelectbtn" value=""></button>
 			</div>
 
 			<div id="skill6Div">
 				<img id="skill6img" src="" width="100" height="100">
 				<!-- <p>Skill Name 6</p> -->
-				<button id="skill6btn" class="selectbtn" value=""></button>
+				<button id="skill6btn" class="selectbtn skillSelectbtn" value=""></button>
 			</div>
 		</div>
 
@@ -195,7 +218,7 @@
 		</div>	
 	</div>
 
-	<!-- TITLE, BLACK BUTTON AND CHARCTER ASPECTS FOR THE CHARACTER CUSTOMIZATION PAGE -->
+	<!-- TITLE, BACK BUTTON AND CHARCTER ASPECTS FOR THE CHARACTER CUSTOMIZATION PAGE -->
 
 	<div id="characterCPageTitle" class="titleArea invis">
 		<h1 class="pagetitle">Customize your Character</h1>
@@ -220,32 +243,32 @@
 		<div class="selectionOptions">
 			<div>
 				<button id="imgBtn1" class="imgLooks chosen" value="1"><img src="Characters/Hero/timur-m-SAKLELG-pO8-unsplash.jpg" id="playerImg1" width="150" height="150"></button>
-				<p>1</p>
+				<p class="center">1</p>
 			</div>
 
 			<div>
 				<button id="imgBtn2" class="imgLooks" value="2"><img src="Characters/Hero/ray-zhuang-Px2Y-sio6-c-unsplash.jpg" id="playerImg2" width="150" height="150"></button>
-				<p>2</p>
+				<p class="center">2</p>
 			</div>
 
 			<div>
 				<button id="imgBtn3" class="imgLooks" value="3"><img src="Characters/Hero/avel-chuklanov-GNVn_4bC2kk-unsplash.jpg" id="playerImg3" width="150" height="150"></button>
-				<p>3</p>
+				<p class="center">3</p>
 			</div>
 
 			<div>
 				<button id="imgBtn4" class="imgLooks" value="4"><img src="Characters/Hero/bryan-debin-nH2tftGLScs-unsplash.jpg" id="playerImg4" width="150" height="150"></button>
-				<p>4</p>
+				<p class="center">4</p>
 			</div>
 
 			<div>
 				<button id="imgBtn5" class="imgLooks" value="5"><img src="Characters/Hero/nihal-karkala--vcg9-w_yMk-unsplash.jpg" id="playerImg5" width="150" height="150"></button>
-				<p>5</p>
+				<p class="center">5</p>
 			</div>
 
 			<div>
 				<button id="imgBtn6" class="imgLooks" value="6"><img src="Characters/Hero/leonsa-fVNyjet1CXY-unsplash.jpg" id="playerImg6" width="150" height="150"></button>
-				<p>6</p>
+				<p class="center">6</p>
 			</div>
 		</div>
 
@@ -271,41 +294,42 @@
 	<nav id="cPoints" class="skillPointArea invis">
 		<form id="cPointsForm" class="invis">
 			<label for="companionPoints">Points Remaining:</label>
-			<input type="number" id="companionPoints" name="companionPoints" class="points" min="0" max="3" placeholder="3" value="3" disabled>
+			<input type="number" id="companionPoints" name="companionPoints" class="points" min="0" max="3" placeholder="3" value="3" autocomplete="off" disabled>
 		</form>
+		<h3 id="noPoints3" class="outOfPoints invis">You are out of points.</h3>
 	</nav>
 
 	<div id="partyCompanions" class="bigSize buttonSideArea invis">
 
 		<div class="selectionOptions">
 			<div id="comp1">
-				<button id="comp1btn" class="imgLooks" value="1"><img src="Characters/Party/raoul-droog-yMSecCHsIBc-unsplash.jpg" id="comp1img" width="150" height="150" alt="1"></button>
-				<p>Companion 1</p>
+				<button id="comp1btn" class="imgLooks" value="1"><img src="Characters/Party/raoul-droog-yMSecCHsIBc-unsplash.jpg" id="comp1img" width="150" height="150"></button>
+				<p class="center">Companion 1</p>
 			</div>
 
 			<div id="comp2">
-				<button id="comp2btn" class="imgLooks" value="2"><img src="Characters/Party/nicolas-picard-fNBrJ4nUVDk-unsplash.jpg" id="comp2img" width="150" height="150" alt="2"></button>
-				<p>Companion 2</p>
+				<button id="comp2btn" class="imgLooks" value="2"><img src="Characters/Party/nicolas-picard-fNBrJ4nUVDk-unsplash.jpg" id="comp2img" width="150" height="150"></button>
+				<p class="center">Companion 2</p>
 			</div>
 
 			<div id="comp3">
-				<button id="comp3btn" class="imgLooks" value="3"><img src="Characters/Party/alex-nicolopoulos-hxn2HjZHyQE-unsplash.jpg" id="comp3img" width="150" height="150" alt="3"></button>
-				<p>Companion 3</p>
+				<button id="comp3btn" class="imgLooks" value="3"><img src="Characters/Party/alex-nicolopoulos-hxn2HjZHyQE-unsplash.jpg" id="comp3img" width="150" height="150"></button>
+				<p class="center">Companion 3</p>
 			</div>
 
 			<div id="comp4">
-				<button id="comp4btn" class="imgLooks" value="4"><img src="Characters/Party/jae-park-7GX5aICb5i4-unsplash.jpg" id="comp4img" width="150" height="150" alt="4"></button>
-				<p>Companion 4</p>
+				<button id="comp4btn" class="imgLooks" value="4"><img src="Characters/Party/jae-park-7GX5aICb5i4-unsplash.jpg" id="comp4img" width="150" height="150"></button>
+				<p class="center">Companion 4</p>
 			</div>
 
 			<div id="comp5">
-				<button id="comp5btn" class="imgLooks" value="5"><img src="Characters/Party/jan-gustavsson-GAzMk0dpNUY-unsplash.jpg" id="comp5img" width="150" height="150" alt="5"></button>
-				<p>Companion 5</p>
+				<button id="comp5btn" class="imgLooks" value="5"><img src="Characters/Party/jan-gustavsson-GAzMk0dpNUY-unsplash.jpg" id="comp5img" width="150" height="150"></button>
+				<p class="center">Companion 5</p>
 			</div>
 
 			<div id="comp6">
-				<button id="comp6btn" class="imgLooks" value="6"><img src="Characters/Party/karina-vorozheeva-rW-I87aPY5Y-unsplash.jpg" id="comp6img" width="150" height="150" alt="6"></button>
-				<p>Companion 6</p>
+				<button id="comp6btn" class="imgLooks" value="6"><img src="Characters/Party/karina-vorozheeva-rW-I87aPY5Y-unsplash.jpg" id="comp6img" width="150" height="150"></button>
+				<p class="center">Companion 6</p>
 			</div>
 		</div>
 
@@ -346,7 +370,7 @@
   						<label for="heroClassHere" class="cardInfo">Class:</label>
   						<label for="heroHPHere" class="cardInfo">Health:</label>
   						<label for="heroAPHere" class="cardInfo">AP:</label>
-  						<label for="heroSkillsHere" class="cardInfo">Skills:</label>
+  						<label for="heroSkillsHere" class="">Skills:</label>
   					</div>
 
   					<!-- INFO SIDE -->
@@ -356,15 +380,20 @@
 			  			<input type="text" id="heroClassHere" class="cardInfo" name="heroClassHere" placeholder="Hero Class" readonly>
 			  			<input type="text" id="heroHPHere" class="cardInfo" name="heroHPHere" placeholder="100" readonly>
 			  			<input type="text" id="heroAPHere" class="cardInfo" name="heroAPHere" placeholder="10" readonly> -->
-			  			<label id="heroNameHere"></label>
-			  			<label id="heroClassHere"></label>
-			  			<label id="heroHPHere"></label>
-			  			<label id="heroAPHere"></label>
-			  			<select id="heroSkillsHere" class="cardInfo" name="heroSkillsHere">
+			  			<label id="heroNameHere" class="cardInfo contentWidth"></label>
+			  			<label id="heroClassHere" class="cardInfo contentWidth"></label>
+			  			<label id="heroHPHere" class="cardInfo contentWidth"></label>
+			  			<label id="heroAPHere" class="cardInfo contentWidth"></label>
+			  			<!-- <select id="heroSkillsHere" class="cardInfo" name="heroSkillsHere">
 			  				<option id="hsOption1" value="skill1">Skill 1</option>
 			  				<option id="hsOption2" value="skill2">Skill 2</option>
 			  				<option id="hsOption3" value="skill3">Skill 3</option>
-			  			</select>
+			  			</select> -->
+			  			<div id="heroSkillsHere" class="cardSkillBtns" name="heroSkillsHere">
+			  				<button id="hsOption1" value="skill1" disabled></button>
+				  			<button id="hsOption2" value="skill2" disabled></button>
+				  			<button id="hsOption3" value="skill3" disabled></button>
+			  			</div>
   					</div>
 		  		</div>
   			</form>
@@ -405,15 +434,20 @@
 			  			<input type="text" id="member1ClassHere" class="cardInfo" name="member1ClassHere" placeholder="Member 1 Class" readonly>
 			  			<input type="text" id="member1HPHere" class="cardInfo" name="member1HPHere" placeholder="100" readonly>
 			  			<input type="text" id="member1APHere" class="cardInfo" name="member1APHere" placeholder="10" readonly> -->
-			  			<label id="member1NameHere"></label>
-			  			<label id="member1ClassHere"></label>
-			  			<label id="member1HPHere"></label>
-			  			<label id="member1APHere"></label>
-			  			<select id="member1SkillsHere" class="cardInfo" name="member1SkillsHere">
+			  			<label id="member1NameHere" class="cardInfo contentWidth"></label>
+			  			<label id="member1ClassHere" class="cardInfo contentWidth"></label>
+			  			<label id="member1HPHere" class="cardInfo contentWidth"></label>
+			  			<label id="member1APHere" class="cardInfo contentWidth"></label>
+			  			<!-- <select id="member1SkillsHere" class="cardInfo" name="member1SkillsHere">
 			  				<option id="cs1Option1" value="skill1">Skill 1</option>
 			  				<option id="cs1Option2" value="skill2">Skill 2</option>
 			  				<option id="cs1Option3" value="skill3">Skill 3</option>
-			  			</select>
+			  			</select> -->
+			  			<div id="member1SkillsHere" class="cardSkillBtns" name="member1SkillsHere">
+			  				<button id="cs1Option1" value="skill1" disabled></button>
+				  			<button id="cs1Option2" value="skill2" disabled></button>
+				  			<button id="cs1Option3" value="skill3" disabled></button>
+			  			</div>
   					</div>
 		  		</div>
   			</form>
@@ -454,15 +488,20 @@
 			  			<input type="text" id="member2ClassHere" class="cardInfo" name="member2ClassHere" placeholder="Member 2 Class" readonly>
 			  			<input type="text" id="member2HPHere" class="cardInfo" name="member2HPHere" placeholder="100" readonly>
 			  			<input type="text" id="member2APHere" class="cardInfo" name="member2APHere" placeholder="10" readonly> -->
-			  			<label id="member2NameHere"></label>
-			  			<label id="member2ClassHere"></label>
-			  			<label id="member2HPHere"></label>
-			  			<label id="member2APHere"></label>
-			  			<select id="member2SkillsHere" class="cardInfo" name="member2SkillsHere">
+			  			<label id="member2NameHere" class="cardInfo contentWidth"></label>
+			  			<label id="member2ClassHere" class="cardInfo contentWidth"></label>
+			  			<label id="member2HPHere" class="cardInfo contentWidth"></label>
+			  			<label id="member2APHere" class="cardInfo contentWidth"></label>
+			  			<!-- <select id="member2SkillsHere" class="cardInfo" name="member2SkillsHere">
 			  				<option id="cs2Option1" value="skill1">Skill 1</option>
 			  				<option id="cs2Option2" value="skill2">Skill 2</option>
 			  				<option id="cs2Option3" value="skill3">Skill 3</option>
-			  			</select>
+			  			</select> -->
+			  			<div id="member2SkillsHere" class="cardSkillBtns" name="member2SkillsHere">
+			  				<button id="cs2Option1" value="skill1" disabled></button>
+				  			<button id="cs2Option2" value="skill2" disabled></button>
+				  			<button id="cs2Option3" value="skill3" disabled></button>
+			  			</div>
   					</div>
 		  		</div>
   			</form>
@@ -503,15 +542,20 @@
 			  			<input type="text" id="member3ClassHere" class="cardInfo" name="member3ClassHere" placeholder="Member 3 Class" readonly>
 			  			<input type="text" id="member3HPHere" class="cardInfo" name="member3HPHere" placeholder="100" readonly>
 			  			<input type="text" id="member3APHere" class="cardInfo" name="member3APHere" placeholder="10" readonly> -->
-			  			<label id="member3NameHere"></label>
-			  			<label id="member3ClassHere"></label>
-			  			<label id="member3HPHere"></label>
-			  			<label id="member3APHere"></label>
-			  			<select id="member3SkillsHere" class="cardInfo" name="member3SkillsHere">
+			  			<label id="member3NameHere" class="cardInfo contentWidth"></label>
+			  			<label id="member3ClassHere" class="cardInfo contentWidth"></label>
+			  			<label id="member3HPHere" class="cardInfo contentWidth"></label>
+			  			<label id="member3APHere" class="cardInfo contentWidth"></label>
+			  			<!-- <select id="member3SkillsHere" class="cardInfo" name="member3SkillsHere">
 			  				<option id="cs3Option1" value="skill1">Skill 1</option>
 			  				<option id="cs3Option2" value="skill2">Skill 2</option>
 			  				<option id="cs3Option3" value="skill3">Skill 3</option>
-			  			</select>
+			  			</select> -->
+			  			<div id="member3SkillsHere" class="cardSkillBtns" name="member3SkillsHere">
+			  				<button id="cs3Option1" value="skill1" disabled></button>
+				  			<button id="cs3Option2" value="skill2" disabled></button>
+				  			<button id="cs3Option3" value="skill3" disabled></button>
+			  			</div>
   					</div>
 		  		</div>
   			</form>
@@ -559,6 +603,8 @@
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+					Credit to https://www.FesliyanStudios.com for the background music.
 				</p>
 			</div>
 		</div>
@@ -696,65 +742,65 @@
 
 		<!-- SKILL INFORMATION -->
 
-		<div id="skillsInfo" class=" ">
+		<div id="skillsInfo" class="invis">
 
-			<div class="invis" id="skill1Info">
-				<h2 class="">Skill Name 1</h2>
-				<p class="pstyle">
+			<div id="skill1Info" class="invis">
+				<h2 id="skill1Title" class="">Skill Name 1</h2>
+				<p id="skill1disc" class="pstyle">
 					<strong>This Skill Does Some Shit, Use it Wisely</strong>
 				</p>
-				<p class="pstyle">
-					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				<p id="skill1disc2" class="pstyle">
+					<strong>Assisting stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
 				</p>
 			</div>
 
-			<div class="invis" id="skill2Info">
-				<h2 class="">Skill Name 2</h2>
-				<p class="pstyle">
+			<div id="skill2Info" class="invis">
+				<h2 id="skill2Title" class="">Skill Name 2</h2>
+				<p id="skill2disc" class="pstyle">
 					<strong>This Skill Does Some Shit, Use it Wisely</strong>
 				</p>
-				<p class="pstyle">
-					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				<p id="skill2disc2" class="pstyle">
+					<strong>Assisting stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
 				</p>
 			</div>
 
-			<div class="invis" id="skill3Info">
-				<h2 class="">Skill Name 3</h2>
-				<p class="pstyle">
+			<div id="skill3Info" class="invis">
+				<h2 id="skill3Title" class="">Skill Name 3</h2>
+				<p id="skill3disc" class="pstyle">
 					<strong>This Skill Does Some Shit, Use it Wisely</strong>
 				</p>
-				<p class="pstyle">
-					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				<p id="skill3disc2" class="pstyle">
+					<strong>Assisting stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
 				</p>
 			</div>
 
-			<div class="invis" id="skill4Info">
-				<h2 class="">Skill Name 4</h2>
-				<p class="pstyle">
+			<div id="skill4Info" class="invis">
+				<h2 id="skill4Title"class="">Skill Name 4</h2>
+				<p id="skill4disc" class="pstyle">
 					<strong>This Skill Does Some Shit, Use it Wisely</strong>
 				</p>
-				<p class="pstyle">
-					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				<p id="skill4disc2" class="pstyle">
+					<strong>Assisting stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
 				</p>
 			</div>
 
-			<div class="invis" id="skill5Info">
-				<h2 class="">Skill Name 5</h2>
-				<p class="pstyle">
+			<div id="skill5Info" class="invis">
+				<h2 id="skill5Title" class="">Skill Name 5</h2>
+				<p id="skill5disc" class="pstyle">
 					<strong>This Skill Does Some Shit, Use it Wisely</strong>
 				</p>
-				<p class="pstyle">
-					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				<p id="skill5disc2" class="pstyle">
+					<strong>Assisting stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
 				</p>
 			</div>
 
-			<div class="invis" id="skill6Info">
-				<h2 class="">Skill Name 6</h2>
-				<p class="pstyle">
+			<div id="skill6Info" class="invis">
+				<h2 id="skill6Title" class="">Skill Name 6</h2>
+				<p id="skill6disc" class="pstyle">
 					<strong>This Skill Does Some Shit, Use it Wisely</strong>
 				</p>
-				<p class="pstyle">
-					<strong>Required stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
+				<p id="skill6disc2" class="pstyle">
+					<strong>Assisting stats:<br>Not Sure I'm Gonna Make Restrictions Cus That Shit Needs Coding.</strong>
 				</p>
 			</div>
 		</div>
@@ -876,7 +922,7 @@
 				<div id="char5" class="charP4">
 					<img src="Characters/Sprites/pixel-art-bead-pattern-cute-ghost-ea58aeae627b8ea5ec3efb8ce9f43c18.png" width="80" height="80">
 				</div>
-
+				
 			</div>
 
 			<!-- TEXT BOX -->

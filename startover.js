@@ -3,6 +3,14 @@
 const startButton = document.getElementById('startButton');
 const title = document.getElementById('title');
 
+// Music
+const musicDiv = document.getElementById('musicDiv');
+const aud = document.getElementById('aud');
+const musicPly = document.getElementById('musicPly');
+const musicStp = document.getElementById('musicStp');
+const musicMute = document.getElementById('musicMute');
+const musicUnMute = document.getElementById('musicUnMute');
+const vol = document.getElementById('vol');
 // Information Page ID's
 const gameInfo = document.getElementById('gameInfo');
 const information = document.getElementById('information');
@@ -102,6 +110,33 @@ const skill4Info = document.getElementById('skill4Info');
 const skill5Info = document.getElementById('skill5Info');
 const skill6Info = document.getElementById('skill6Info');
 
+const skill1Title = document.getElementById('skill1Title');
+const skill2Title = document.getElementById('skill2Title');
+const skill3Title = document.getElementById('skill3Title');
+const skill4Title = document.getElementById('skill4Title');
+const skill5Title = document.getElementById('skill5Title');
+const skill6Title = document.getElementById('skill6Title');
+
+const skillTitle = [skill1Title, skill2Title, skill3Title, skill4Title, skill5Title, skill6Title];
+
+const skill1disc = document.getElementById('skill1disc');
+const skill2disc = document.getElementById('skill2disc');
+const skill3disc = document.getElementById('skill3disc');
+const skill4disc = document.getElementById('skill4disc');
+const skill5disc = document.getElementById('skill5disc');
+const skill6disc = document.getElementById('skill6disc');
+
+const skilldisc = [skill1disc, skill2disc, skill3disc, skill4disc, skill5disc, skill6disc];
+
+const skill1disc2 = document.getElementById('skill1disc2');
+const skill2disc2 = document.getElementById('skill2disc2');
+const skill3disc2 = document.getElementById('skill3disc2');
+const skill4disc2 = document.getElementById('skill4disc2');
+const skill5disc2 = document.getElementById('skill5disc2');
+const skill6disc2 = document.getElementById('skill6disc2');
+
+const skilldisc2 = [skill1disc2, skill2disc2, skill3disc2, skill4disc2, skill5disc2, skill6disc2];
+
 // Character Custumization Page ID's
 const characterCPageTitle = document.getElementById('characterCPageTitle');
 const characterCPageBB = document.getElementById('characterCPageBB');
@@ -149,6 +184,7 @@ const cPointsForm = document.getElementById('cPointsForm');
 const partyCompanions = document.getElementById('partyCompanions');
 const companionInfo = document.getElementById('companionInfo');
 const companionPoints = document.getElementById('companionPoints');
+const noPoints3 = document.getElementById('noPoints3');
 // ******BUTTONS******
 const comp1btn = document.getElementById('comp1btn');
 const comp2btn = document.getElementById('comp2btn');
@@ -237,6 +273,102 @@ let comp3Array = [member3NameHere, member3ClassHere, member3HPHere, member3APHer
 // PLAYER INFO
 let playerObject = {};
 
+//****************************************SKILLS****************************************
+class Skill {
+	constructor(name, img, role, info, stats){
+		this.name = name;
+		this.img = img;
+		this.role = role;
+		this.info = info;
+		this.stats = stats;
+	}
+
+	// skill functions
+};
+
+// *****+++++=====WARRIOR SKILLS=====+++++*****
+
+// Combat Skills
+const skill1 = new Skill("tbd", "Skills/Warrior/warrior.jpg", "Warrior", "tbd", "Assisting stats: tbd");
+const skill2 = new Skill("tbd", "Skills/Warrior/warrior.jpg", "Warrior", "tbd", "Assisting stats: tbd");
+const skill3 = new Skill("tbd", "Skills/Warrior/warrior.jpg", "Warrior", "tbd", "Assisting stats: tbd");
+
+// Buff/Debuff Skills
+const catnipScent = new Skill("Catnip Scent", "Skills/Warrior/Catnip_Scent.png", "Warrior", "You pop open a bag of catnip, causing all enemies to focus on attacking you.", "Assisting stats: tbd");
+const loaf = new Skill("Loaf", "Skills/Warrior/Loaf.png", "Warrior", "You change into a defensive loaf position, reducing all damage taken for 2 turns", "Assisting stats: tbd");
+const hiss = new Skill("Hiss", "Skills/Warrior/Hiss.png", "Warrior", "You hiss aggressively at your enemies, causing them to shudder in fear.", "Assisting stats: tbd");
+
+const warriorSkillArray = [skill1, skill2, skill3, catnipScent, loaf, hiss];
+
+// *****+++++=====ROGUE SKILLS=====+++++*****
+
+// Combat Skills
+const skill7 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+const skill8 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+const skill9 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+
+// Buff/Debuff Skills
+const skill10 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+const skill11 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+const skill12 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+
+const rogueSkillArray = [skill7, skill8, skill9, skill10, skill11, skill12];
+
+// *****+++++=====RANGER SKILLS=====+++++*****
+
+// Combat Skills
+const skill13 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+const skill14 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+const skill15= new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+
+// Buff/Debuff Skills
+const skill16 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+const skill17 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+const skill18 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+
+const rangerSkillArray = [skill13, skill14, skill15, skill16, skill17, skill18];
+
+// *****+++++=====BARD SKILLS=====+++++*****
+
+// Combat Skills
+const pawBash = new Skill("Paw Bash", "Skills/Bard/Paw_Bash.png", "Bard", "play on your enemies as if they were drums", "Assisting stats: tbd");
+const songOfMyPeople = new Skill("Song of my people", "Skills/Bard/Song_of_my people.png", "Bard", "You sing the song of your people, sending strong sound waves that damage enemies.", "Assisting stats: tbd");
+const skill21 = new Skill("tbd", "Skills/Bard/bard.jpg", "Bard", "tbd");
+
+// Buff/Debuff Skills
+const dramaticMewling = new Skill("Dramatic Mewling", "Skills/Bard/Dramatic_Mewling.png", "Bard", "You go into an elaborate and dramatic performance, faking your glorious death in battle, distracting the enemies for the next turn, causing them to ignore you and losing all negative status effects.", "Assisting stats: tbd");
+const skill23 = new Skill("tbd", "Skills/Bard/bard.jpg", "Bard", "tbd", "Assisting stats: tbd");
+const skill24 = new Skill("tbd", "Skills/Bard/bard.jpg", "Bard", "tbd", "Assisting stats: tbd");
+
+const bardSkillArray = [pawBash, songOfMyPeople, skill21, dramaticMewling, skill23, skill24];
+
+// *****+++++=====CLERIC SKILLS=====+++++*****
+
+// Combat Skills
+const skill25 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+const skill26 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+const skill27 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+
+// Buff/Debuff Skills
+const skill28 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+const skill29 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+const skill30 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+
+const clericSkillArray = [skill25, skill26, skill27, skill28, skill29, skill30];
+
+// *****+++++=====WIZARD SKILLS=====+++++*****
+
+// Combat Skills
+const skill31 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
+const skill32 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
+const skill33 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
+
+// Buff/Debuff Skills
+const lick = new Skill("Lick", "Skills/Wizard/Lick.png", "Wizard", "You lick yourself, magically hardening your fur for extra protection.", "Assisting stats: tbd");
+const tailWag = new Skill("Tail Wag", "Skills/Wizard/Tail_Wag.png", "Wizard", "You wag your tail playfully, magically mesmerizing the enemies and making them less aggressive towards you.", "Assisting stats: tbd");
+const skill36 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
+
+const wizardSkillArray = [skill31, skill32, skill33, lick, tailWag, skill36];
 
 //**************************************FUNCTIONS**************************************
 // hiding a component from the page
@@ -248,17 +380,56 @@ var showing = function(target){
 	target.classList.remove('invis');
 };
 
-
 // *************************************TITLE PAGE*************************************
 
 // Changing from title page to information page
-
 startButton.addEventListener('click', ()=> {
 	hiding(startButton);
-	hiding(title);
 	showing(gameInfo);
 	showing(information);
+	showing(musicDiv);
+	aud.play();
 }); 
+
+// music section
+
+musicPly.addEventListener('click', ()=> {
+	aud.play();
+	hiding(musicPly);
+	showing(musicStp);
+});
+musicStp.addEventListener('click', ()=> {
+	aud.pause();
+	hiding(musicStp);
+	showing(musicPly);
+});
+
+var volnum;
+
+function volCtrl(){
+	if(vol.value > 0){
+		volnum = vol.value;
+		aud.volume = volnum;
+	};
+};
+
+musicMute.addEventListener('click', ()=>{
+	aud.volume = 0;
+	vol.value = 0;
+	hiding(musicMute);
+	showing(musicUnMute);
+});
+musicUnMute.addEventListener('click', ()=>{
+	vol.value = volnum;
+	aud.volume = vol.value;
+	hiding(musicUnMute);
+	showing(musicMute);
+});
+
+vol.addEventListener('click', ()=> {
+	aud.volume = vol.value;
+	volCtrl();
+});
 
 // *************************************INFO PAGE*************************************
 
@@ -271,6 +442,8 @@ back1.addEventListener('click', ()=> {
 	hiding(information);
 	hiding(creditsInfo);
 	hiding(theStoryInfo);
+	hiding(musicDiv);
+	aud.pause();
 });
 
 
@@ -299,6 +472,7 @@ createYC.addEventListener('click', ()=>{
 	hiding(gameInfo);
 	hiding(theStoryInfo);
 	hiding(creditsInfo);
+	hiding(title);
 	// new page
 	showing(classPageTitle);
 	showing(classPageBB);
@@ -326,66 +500,77 @@ back2.addEventListener('click', ()=> {
 	// new page
 	showing(gameInfo);
 	showing(information);
+	showing(title);
 });
 
 // CLASS SKILLS OBJECTS
-let warriorSkillObject = {
-	warriorSkill1: 'Skills/Warrior/warrior.jpg',
-	warriorSkill2: 'Skills/Warrior/warrior.jpg',
-	warriorSkill3: 'Skills/Warrior/warrior.jpg',
-	warriorSkill4: 'Skills/Warrior/warrior.jpg',
-	warriorSkill5: 'Skills/Warrior/warrior.jpg',
-	warriorSkill6: 'Skills/Warrior/warrior.jpg'
-};
-let rogueSkillObject = {
-	rogueSkill1: 'Skills/Rogue/rogue.jpg',
-	rogueSkill2: 'Skills/Rogue/rogue.jpg',
-	rogueSkill3: 'Skills/Rogue/rogue.jpg',
-	rogueSkill4: 'Skills/Rogue/rogue.jpg',
-	rogueSkill5: 'Skills/Rogue/rogue.jpg',
-	rogueSkill6: 'Skills/Rogue/rogue.jpg'
-};
-let rangerSkillObject = {
-	rangerSkill1: 'Skills/Ranger/ranger.jpg',
-	rangerSkill2: 'Skills/Ranger/ranger.jpg',
-	rangerSkill3: 'Skills/Ranger/ranger.jpg',
-	rangerSkill4: 'Skills/Ranger/ranger.jpg',
-	rangerSkill5: 'Skills/Ranger/ranger.jpg',
-	rangerSkill6: 'Skills/Ranger/ranger.jpg'
-};
-let bardSkillObject = {
-	bardSkill1: 'Skills/Bard/bard.jpg',
-	bardSkill2: 'Skills/Bard/bard.jpg',
-	bardSkill3: 'Skills/Bard/bard.jpg',
-	bardSkill4: 'Skills/Bard/bard.jpg',
-	bardSkill5: 'Skills/Bard/bard.jpg',
-	bardSkill6: 'Skills/Bard/bard.jpg'
-};
-let clericSkillObject = {
-	clericSkill1: 'Skills/Cleric/cleric.jpg',
-	clericSkill2: 'Skills/Cleric/cleric.jpg',
-	clericSkill3: 'Skills/Cleric/cleric.jpg',
-	clericSkill4: 'Skills/Cleric/cleric.jpg',
-	clericSkill5: 'Skills/Cleric/cleric.jpg',
-	clericSkill6: 'Skills/Cleric/cleric.jpg'
-};
-let wizardSkillObject = {
-	wizardSkill1: 'Skills/Wizard/wizard.jpg',
-	wizardSkill2: 'Skills/Wizard/wizard.jpg',
-	wizardSkill3: 'Skills/Wizard/wizard.jpg',
-	wizardSkill4: 'Skills/Wizard/wizard.jpg',
-	wizardSkill5: 'Skills/Wizard/wizard.jpg',
-	wizardSkill6: 'Skills/Wizard/wizard.jpg'
-};
+// let warriorSkillObject = {
+// 	warriorSkill1: 'Skills/Warrior/warrior.jpg',
+// 	warriorSkill2: 'Skills/Warrior/warrior.jpg',
+// 	warriorSkill3: 'Skills/Warrior/warrior.jpg',
+// 	warriorSkill4: 'Skills/Warrior/warrior.jpg',
+// 	warriorSkill5: 'Skills/Warrior/warrior.jpg',
+// 	warriorSkill6: 'Skills/Warrior/warrior.jpg'
+// };
+// let rogueSkillObject = {
+// 	rogueSkill1: 'Skills/Rogue/rogue.jpg',
+// 	rogueSkill2: 'Skills/Rogue/rogue.jpg',
+// 	rogueSkill3: 'Skills/Rogue/rogue.jpg',
+// 	rogueSkill4: 'Skills/Rogue/rogue.jpg',
+// 	rogueSkill5: 'Skills/Rogue/rogue.jpg',
+// 	rogueSkill6: 'Skills/Rogue/rogue.jpg'
+// };
+// let rangerSkillObject = {
+// 	rangerSkill1: 'Skills/Ranger/ranger.jpg',
+// 	rangerSkill2: 'Skills/Ranger/ranger.jpg',
+// 	rangerSkill3: 'Skills/Ranger/ranger.jpg',
+// 	rangerSkill4: 'Skills/Ranger/ranger.jpg',
+// 	rangerSkill5: 'Skills/Ranger/ranger.jpg',
+// 	rangerSkill6: 'Skills/Ranger/ranger.jpg'
+// };
+// let bardSkillObject = {
+// 	bardSkill1: 'Skills/Bard/bard.jpg',
+// 	bardSkill2: 'Skills/Bard/bard.jpg',
+// 	bardSkill3: 'Skills/Bard/bard.jpg',
+// 	bardSkill4: 'Skills/Bard/bard.jpg',
+// 	bardSkill5: 'Skills/Bard/bard.jpg',
+// 	bardSkill6: 'Skills/Bard/bard.jpg'
+// };
+// let clericSkillObject = {
+// 	clericSkill1: 'Skills/Cleric/cleric.jpg',
+// 	clericSkill2: 'Skills/Cleric/cleric.jpg',
+// 	clericSkill3: 'Skills/Cleric/cleric.jpg',
+// 	clericSkill4: 'Skills/Cleric/cleric.jpg',
+// 	clericSkill5: 'Skills/Cleric/cleric.jpg',
+// 	clericSkill6: 'Skills/Cleric/cleric.jpg'
+// };
+// let wizardSkillObject = {
+// 	wizardSkill1: 'Skills/Wizard/wizard.jpg',
+// 	wizardSkill2: 'Skills/Wizard/wizard.jpg',
+// 	wizardSkill3: 'Skills/Wizard/wizard.jpg',
+// 	wizardSkill4: 'Skills/Wizard/wizard.jpg',
+// 	wizardSkill5: 'Skills/Wizard/wizard.jpg',
+// 	wizardSkill6: 'Skills/Wizard/wizard.jpg'
+// };
 
 // CLASSES INFORMATION AND SELECT
 let skillBTNS = [skill1btn, skill2btn, skill3btn, skill4btn, skill5btn, skill6btn];
 let skillIMGS = [skill1img, skill2img, skill3img, skill4img, skill5img, skill6img];
+// function skillDisplay(clsObj){
+// 	for(i = 0; i < skillBTNS.length; i++){
+// 		skillBTNS[i].innerText = Object.keys(clsObj)[i];
+// 		skillBTNS[i].value = Object.keys(clsObj)[i];
+// 		skillIMGS[i].src = Object.values(clsObj)[i];
+// 	};
+// };
 function skillDisplay(clsObj){
 	for(i = 0; i < skillBTNS.length; i++){
-		skillBTNS[i].innerText = Object.keys(clsObj)[i];
-		skillBTNS[i].value = Object.keys(clsObj)[i];
-		skillIMGS[i].src = Object.values(clsObj)[i];
+		skillBTNS[i].innerText = (clsObj)[i].name;
+		skillBTNS[i].value = (clsObj)[i].name;
+		skillIMGS[i].src = (clsObj)[i].img;
+		skillTitle[i].innerText = (clsObj)[i].name;
+		skilldisc[i].innerText = (clsObj)[i].info;
+		skilldisc2[i].innerText = (clsObj)[i].stats;
 	};
 };
 let moveFromClassToStats = function() {
@@ -420,7 +605,7 @@ selectbtn1.addEventListener('click', ()=>{
 	hiding(warriorInfo);
 	playerClassIs = selectbtn1.value;
 	userClass.innerText = `Class: ${playerClassIs}`;
-	skillDisplay(warriorSkillObject);
+	skillDisplay(warriorSkillArray);
 	moveFromClassToStats();
 });
 
@@ -442,7 +627,7 @@ selectbtn2.addEventListener('click', ()=>{
 	hiding(rogueInfo);
 	playerClassIs = selectbtn2.value;
 	userClass.innerText = `Class: ${playerClassIs}`;
-	skillDisplay(rogueSkillObject);
+	skillDisplay(rogueSkillArray);
 	moveFromClassToStats();
 });
 
@@ -464,7 +649,7 @@ selectbtn3.addEventListener('click', ()=>{
 	hiding(rangerInfo);
 	playerClassIs = selectbtn3.value;
 	userClass.innerText = `Class: ${playerClassIs}`;
-	skillDisplay(rangerSkillObject);
+	skillDisplay(rangerSkillArray);
 	moveFromClassToStats();
 });
 
@@ -486,7 +671,7 @@ selectbtn4.addEventListener('click', ()=>{
 	hiding(bardInfo);
 	playerClassIs = selectbtn4.value;
 	userClass.innerText = `Class: ${playerClassIs}`;
-	skillDisplay(bardSkillObject);
+	skillDisplay(bardSkillArray);
 	moveFromClassToStats();
 });
 
@@ -508,7 +693,7 @@ selectbtn5.addEventListener('click', ()=>{
 	hiding(clericInfo);
 	playerClassIs = selectbtn5.value;
 	userClass.innerText = `Class: ${playerClassIs}`;
-	skillDisplay(clericSkillObject);
+	skillDisplay(clericSkillArray);
 	moveFromClassToStats();
 });
 
@@ -530,7 +715,7 @@ selectbtn6.addEventListener('click', ()=>{
 	hiding(wizardInfo);
 	playerClassIs = selectbtn6.value;
 	userClass.innerText = `Class: ${playerClassIs}`;
-	skillDisplay(wizardSkillObject);
+	skillDisplay(wizardSkillArray);
 	moveFromClassToStats();
 });
 
@@ -1109,9 +1294,9 @@ function companionSelect() {
 	};
 
 	if(Number(companionPoints.value) === 0){
-		showing(noPoints2);
+		showing(noPoints3);
 	} else {
-		hiding(noPoints2);
+		hiding(noPoints3);
 	};
 
 	if(Number(companionPoints.value) < 0){
@@ -1151,69 +1336,98 @@ comp6btn.addEventListener('click', companionSelect);
 
 //~~~~~~CHARACTER OBJECTS~~~~~~
 
-// **********COMPANION 1**********
-let companion1Object = {
-	name: 'Companion 1',
-	class: 'tbd',
-	portrait: comp1img.src,
-	hp: 'tbd',
-	ap: 10,
-	skills: [1, 2, 3]
+class Companions{
+	constructor(name, img, role, info, str, dex, con, int, wis, cha, HP, AP, skill1, skill2, skill3){
+		this.name = name;
+		this.img = img;
+		this.role = role;
+		this.info = info;
+		this.str = str;
+		this.dex = dex;
+		this.con = con;
+		this.int = int;
+		this.wis = wis;
+		this.cha = cha;
+		this.HP = HP;
+		this.AP = AP;
+		this.skill1 = skill1;
+		this.skill2 = skill2;
+		this.skill3 = skill3;
+	};
+
+	// Companion Skills
 };
 
-// **********COMPANION 2**********
+const companion1 = new Companions("Companion 1", comp1img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill1", "skill2", "skill3");
+const companion2 = new Companions("Companion 2", comp2img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill4", "skill5", "skill6");
+const companion3 = new Companions("Companion 3", comp3img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill7", "skill8", "skill9");
+const companion4 = new Companions("Companion 4", comp4img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill10", "skill11", "skill12");
+const companion5 = new Companions("Companion 5", comp5img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill13", "skill14", "skill15");
+const companion6 = new Companions("Companion 6", comp6img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill16", "skill17", "skill18");
 
-let companion2Object = {
-	name: 'Companion 2',
-	class: 'tbd',
-	portrait: comp2img.src,
-	hp: 'tbd',
-	ap: 10,
-	skills: [4, 5, 6]
-};
+// // **********COMPANION 1**********
+// let companion1Object = {
+// 	name: 'Companion 1',
+// 	class: 'tbd',
+// 	portrait: comp1img.src,
+// 	hp: 'tbd',
+// 	ap: 10,
+// 	skills: [1, 2, 3]
+// };
 
-// **********COMPANION 3**********
-let companion3Object = {
-	name: 'Companion 3',
-	class: 'tbd',
-	portrait: comp3img.src,
-	hp: 'tbd',
-	ap: 10,
-	skills:[7, 8, 9]
-};
+// // **********COMPANION 2**********
 
-// **********COMPANION 4**********
+// let companion2Object = {
+// 	name: 'Companion 2',
+// 	class: 'tbd',
+// 	portrait: comp2img.src,
+// 	hp: 'tbd',
+// 	ap: 10,
+// 	skills: [4, 5, 6]
+// };
 
-let companion4Object = {
-	name: 'Companion 4',
-	class: 'tbd',
-	portrait: comp4img.src,
-	hp: 'tbd',
-	ap: 10,
-	skills:[10, 11, 12]
-};
+// // **********COMPANION 3**********
+// let companion3Object = {
+// 	name: 'Companion 3',
+// 	class: 'tbd',
+// 	portrait: comp3img.src,
+// 	hp: 'tbd',
+// 	ap: 10,
+// 	skills:[7, 8, 9]
+// };
 
-// **********COMPANION 5**********
+// // **********COMPANION 4**********
 
-let companion5Object = {
-	name: 'Companion 5',
-	class: 'tbd',
-	portrait: comp5img.src,
-	hp: 'tbd',
-	ap: 10,
-	skills: [13, 14, 15]
-};
+// let companion4Object = {
+// 	name: 'Companion 4',
+// 	class: 'tbd',
+// 	portrait: comp4img.src,
+// 	hp: 'tbd',
+// 	ap: 10,
+// 	skills:[10, 11, 12]
+// };
 
-// **********COMPANION 6**********
+// // **********COMPANION 5**********
 
-let companion6Object = {
-	name: 'Companion 6',
-	class: 'tbd',
-	portrait: comp6img.src,
-	hp: 'tbd',
-	ap: 10,
-	skills: [16, 17, 18]
-};
+// let companion5Object = {
+// 	name: 'Companion 5',
+// 	class: 'tbd',
+// 	portrait: comp5img.src,
+// 	hp: 'tbd',
+// 	ap: 10,
+// 	skills: [13, 14, 15]
+// };
+
+// // **********COMPANION 6**********
+
+// let companion6Object = {
+// 	name: 'Companion 6',
+// 	class: 'tbd',
+// 	portrait: comp6img.src,
+// 	hp: 'tbd',
+// 	ap: 10,
+// 	skills: [16, 17, 18]
+// };
 
 // CHOOSING THE CORRECT PLAYER PICTURE
 let playerImgs = [playerImg1, playerImg2, playerImg3, playerImg4, playerImg5, playerImg6];
@@ -1248,12 +1462,21 @@ function whichComp(){
 };
 let compImgs = [comp1img, comp2img, comp3img, comp4img, comp5img, comp6img];
 let chosenPartyMmbrs = [partyMemberImg1, partyMemberImg2, partyMemberImg3];
+// function whichCompImg(){
+// 	for(j = 0, k = 0, l = 0; j < compImgs.length; j++){
+// 		if(Number(compImgs[j].alt) === Number(pCompanions[k])){
+// 				chosenPartyMmbrs[l].src = compImgs[j].src;
+// 				l++;
+// 				k++;
+// 		};
+// 	};
+// };
+
 function whichCompImg(){
-	for(j = 0, k = 0, l = 0; j < compImgs.length; j++){
-		if(Number(compImgs[j].alt) === Number(pCompanions[k])){
-				chosenPartyMmbrs[l].src = compImgs[j].src;
-				l++;
-				k++;
+	for(i = 0, j = 0; i < compImgs.length; i++){
+		if(compImgs[i].parentElement.classList.contains('chosen')){
+			chosenPartyMmbrs[j].src = compImgs[i].src;
+			j++;
 		};
 	};
 };
@@ -1268,58 +1491,65 @@ function companionsInfo(){
 
 		switch (compNum) {
 		case 1:
-			allCompArrays[k][0].innerText = `${Object.values(companion1Object)[0]}`;
-			allCompArrays[k][1].innerText = `${Object.values(companion1Object)[1]}`;
-			allCompArrays[k][2].innerText = `${Object.values(companion1Object)[3]}`;
-			allCompArrays[k][3].innerText = `${Object.values(companion1Object)[4]}`;
-			allCompArrays[k][4].innerText = `${Object.values(companion1Object)[5][0]}`;
-			allCompArrays[k][5].innerText = `${Object.values(companion1Object)[5][1]}`;
-			allCompArrays[k][6].innerText = `${Object.values(companion1Object)[5][2]}`;
+			// allCompArrays[k][0].innerText = `${Object.values(companion1Object)[0]}`;
+			// allCompArrays[k][1].innerText = `${Object.values(companion1Object)[1]}`;
+			// allCompArrays[k][2].innerText = `${Object.values(companion1Object)[3]}`;
+			// allCompArrays[k][3].innerText = `${Object.values(companion1Object)[4]}`;
+			// allCompArrays[k][4].innerText = `${Object.values(companion1Object)[5][0]}`;
+			// allCompArrays[k][5].innerText = `${Object.values(companion1Object)[5][1]}`;
+			// allCompArrays[k][6].innerText = `${Object.values(companion1Object)[5][2]}`;
+			allCompArrays[k][0].innerText = companion1.name;
+			allCompArrays[k][1].innerText = companion1.role;
+			allCompArrays[k][2].innerText = companion1.HP;
+			allCompArrays[k][3].innerText = companion1.AP;
+			allCompArrays[k][4].innerText = companion1.skill1;
+			allCompArrays[k][5].innerText = companion1.skill2;
+			allCompArrays[k][6].innerText = companion1.skill3;
 			break;
 		case 2:
-			allCompArrays[k][0].innerText = `${Object.values(companion2Object)[0]}`;
-			allCompArrays[k][1].innerText = `${Object.values(companion2Object)[1]}`;
-			allCompArrays[k][2].innerText = `${Object.values(companion2Object)[3]}`;
-			allCompArrays[k][3].innerText = `${Object.values(companion2Object)[4]}`;
-			allCompArrays[k][4].innerText = `${Object.values(companion2Object)[5][0]}`;
-			allCompArrays[k][5].innerText = `${Object.values(companion2Object)[5][1]}`;
-			allCompArrays[k][6].innerText = `${Object.values(companion2Object)[5][2]}`;
+			allCompArrays[k][0].innerText = companion2.name;
+			allCompArrays[k][1].innerText = companion2.role;
+			allCompArrays[k][2].innerText = companion2.HP;
+			allCompArrays[k][3].innerText = companion2.AP;
+			allCompArrays[k][4].innerText = companion2.skill1;
+			allCompArrays[k][5].innerText = companion2.skill2;
+			allCompArrays[k][6].innerText = companion2.skill3;
 			break;
 		case 3:
-			allCompArrays[k][0].innerText = `${Object.values(companion3Object)[0]}`;
-			allCompArrays[k][1].innerText = `${Object.values(companion3Object)[1]}`;
-			allCompArrays[k][2].innerText = `${Object.values(companion3Object)[3]}`;
-			allCompArrays[k][3].innerText = `${Object.values(companion3Object)[4]}`;
-			allCompArrays[k][4].innerText = `${Object.values(companion3Object)[5][0]}`;
-			allCompArrays[k][5].innerText = `${Object.values(companion3Object)[5][1]}`;
-			allCompArrays[k][6].innerText = `${Object.values(companion3Object)[5][2]}`;
+			allCompArrays[k][0].innerText = companion3.name;
+			allCompArrays[k][1].innerText = companion3.role;
+			allCompArrays[k][2].innerText = companion3.HP;
+			allCompArrays[k][3].innerText = companion3.AP;
+			allCompArrays[k][4].innerText = companion3.skill1;
+			allCompArrays[k][5].innerText = companion3.skill2;
+			allCompArrays[k][6].innerText = companion3.skill3;
 			break;
 		case 4:
-			allCompArrays[k][0].innerText = `${Object.values(companion4Object)[0]}`;
-			allCompArrays[k][1].innerText = `${Object.values(companion4Object)[1]}`;
-			allCompArrays[k][2].innerText = `${Object.values(companion4Object)[3]}`;
-			allCompArrays[k][3].innerText = `${Object.values(companion4Object)[4]}`;
-			allCompArrays[k][4].innerText = `${Object.values(companion4Object)[5][0]}`;
-			allCompArrays[k][5].innerText = `${Object.values(companion4Object)[5][1]}`;
-			allCompArrays[k][6].innerText = `${Object.values(companion4Object)[5][2]}`;
+			allCompArrays[k][0].innerText = companion4.name;
+			allCompArrays[k][1].innerText = companion4.role;
+			allCompArrays[k][2].innerText = companion4.HP;
+			allCompArrays[k][3].innerText = companion4.AP;
+			allCompArrays[k][4].innerText = companion4.skill1;
+			allCompArrays[k][5].innerText = companion4.skill2;
+			allCompArrays[k][6].innerText = companion4.skill3;
 			break;
 		case 5:
-			allCompArrays[k][0].innerText = `${Object.values(companion5Object)[0]}`;
-			allCompArrays[k][1].innerText = `${Object.values(companion5Object)[1]}`;
-			allCompArrays[k][2].innerText = `${Object.values(companion5Object)[3]}`;
-			allCompArrays[k][3].innerText = `${Object.values(companion5Object)[4]}`;
-			allCompArrays[k][4].innerText = `${Object.values(companion5Object)[5][0]}`;
-			allCompArrays[k][5].innerText = `${Object.values(companion5Object)[5][1]}`;
-			allCompArrays[k][6].innerText = `${Object.values(companion5Object)[5][2]}`;
+			allCompArrays[k][0].innerText = companion5.name;
+			allCompArrays[k][1].innerText = companion5.role;
+			allCompArrays[k][2].innerText = companion5.HP;
+			allCompArrays[k][3].innerText = companion5.AP;
+			allCompArrays[k][4].innerText = companion5.skill1;
+			allCompArrays[k][5].innerText = companion5.skill2;
+			allCompArrays[k][6].innerText = companion5.skill3;
 			break;
 		case 6:
-			allCompArrays[k][0].innerText = `${Object.values(companion6Object)[0]}`;
-			allCompArrays[k][1].innerText = `${Object.values(companion6Object)[1]}`;
-			allCompArrays[k][2].innerText = `${Object.values(companion6Object)[3]}`;
-			allCompArrays[k][3].innerText = `${Object.values(companion6Object)[4]}`;
-			allCompArrays[k][4].innerText = `${Object.values(companion6Object)[5][0]}`;
-			allCompArrays[k][5].innerText = `${Object.values(companion6Object)[5][1]}`;
-			allCompArrays[k][6].innerText = `${Object.values(companion6Object)[5][2]}`;
+			allCompArrays[k][0].innerText = companion6.name;
+			allCompArrays[k][1].innerText = companion6.role;
+			allCompArrays[k][2].innerText = companion6.HP;
+			allCompArrays[k][3].innerText = companion6.AP;
+			allCompArrays[k][4].innerText = companion6.skill1;
+			allCompArrays[k][5].innerText = companion6.skill2;
+			allCompArrays[k][6].innerText = companion6.skill3;
 			break;
 		default:
 			console.log('something aint working here');
@@ -1342,6 +1572,7 @@ confirmBTN4.addEventListener('click', ()=> {
 		hiding(partyCompanions);
 		hiding(companionInfo);
 		hiding(information);
+		document.body.style.gridTemplateRows = "0.1fr 0.1fr 0.001fr 0.001fr 3fr";
 		// new page
 		showing(adventureB);
 		showing(allPartyCards);
@@ -1363,7 +1594,7 @@ confirmBTN4.addEventListener('click', ()=> {
 function storyProgression(array, counter){
 	let myParagraph = document.createElement('p');
 	let myText = document.createTextNode(`${array[counter]}`);
-	gameTextArea.appendChild(myParagraph).classList.add('noMargin');
+	gameTextArea.appendChild(myParagraph).classList.add('pMargin');
 	myParagraph.appendChild(myText);
 	// MAKING SURE THE SCROLL BAR IS ALWAYS AT THE BOTTOM SO WE CAN SEE THE NEW TEXT THAT IS ADDED
 	gameTextArea.scrollTop = gameTextArea.scrollHeight;
@@ -1372,7 +1603,7 @@ function storyProgression(array, counter){
 function choiceMade(){
 	let contMessageH2 = document.createElement('h2');
 	let contMessagetxt = document.createTextNode('A choice has been made. Please click next to continue');
-	gameTextArea.appendChild(contMessageH2).classList.add('noMargin', 'txtcolour');
+	gameTextArea.appendChild(contMessageH2).classList.add('pMargin', 'txtcolour');
 	contMessageH2.appendChild(contMessagetxt);
 };
 
@@ -1383,9 +1614,9 @@ function storyDecision(array,removeBtn, btn1, btn2){
 	let btnText1 = document.createTextNode(`${array[(array.length - 2)]}`);
 	let btnText2 = document.createTextNode(`${array[(array.length - 1)]}`);
 	gameTextArea.appendChild(optionDiv).classList.add('flexy');
-	optionDiv.appendChild(myBtn1).classList.add('yesMargin', 'selectbtn');
+	optionDiv.appendChild(myBtn1).classList.add('optionBtnMargin', 'selectbtn', 'pChoice');
 	myBtn1.appendChild(btnText1);
-	optionDiv.appendChild(myBtn2).classList.add('yesMargin', 'selectbtn');
+	optionDiv.appendChild(myBtn2).classList.add('optionBtnMargin', 'selectbtn', 'pChoice');
 	myBtn2.appendChild(btnText2);
 	gameTextArea.scrollTop = gameTextArea.scrollHeight;
 	myBtn1.addEventListener('click', ()=>{
