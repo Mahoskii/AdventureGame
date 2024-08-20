@@ -134,6 +134,10 @@ select,option{
   font-family: "Press Start 2P";
 }
 
+ul{
+  padding-left: 1rem;
+}
+
 /*====BUTTONS====*/
 
 .buttons{
@@ -214,6 +218,10 @@ select,option{
   display: grid;
   align-content: center;
   grid-template-columns: 1fr 1fr;
+}
+
+#charInfoArea{
+  text-align: left;
 }
 
 /*====STATS====*/
@@ -344,32 +352,68 @@ select,option{
 }
 
 .charP{
+  display: grid;
   position: absolute;
-  top:400px;
-  left:50px;
+  top:382px;
+  left:420px;
+}
+
+.charP:hover{
+  transform: scale(1.05);
 }
 
 .charP1{
+  display: grid;
   position: absolute;
-  top:410px;
-  left:330px;
+  top:392px;
+  left:650px;
+}
+
+.charP1:hover{
+  transform: scale(1.05);
 }
 
 .charP2{
+  display: grid;
   position: absolute;
-  top:355px;
-  right: 205px;
+  top:337px;
+  left: 150px;
 }
+
+.charP2:hover{
+  transform: scale(1.05);
+}
+
 .charP3{
+  display: grid;
   position: absolute;
-  top:400px;
-  right: 80px;
+  top:390px;
+  left: 60px;
+}
+
+.charP3:hover{
+  transform: scale(1.05);
 }
 
 .charP4{
+  display: grid;
   position: absolute;
-  top:310px;
-  left:200px;
+  top:292px;
+  left:535px;
+}
+
+.charP4:hover{
+  transform: scale(1.05);
+}
+
+.spriteHP{
+  display: grid;
+  margin: 0rem;
+  width: 3.125rem;
+  justify-content: center;
+  justify-self: center;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /*====LAYOUTS, MARKING, AND TEXT COLOURS====*/
@@ -392,7 +436,7 @@ select,option{
 
 /*====MEDIA QUERIES====*/
 
-@media only screen and (orientation:portrait){
+/*@media only screen and (orientation:portrait){
   body {  
     height: 100vw;
     -webkit-transform: rotate(90deg);
@@ -410,4 +454,4 @@ select,option{
      -ms-transform: rotate(0deg);
      transform: rotate(0deg);
   }
-}
+}*/

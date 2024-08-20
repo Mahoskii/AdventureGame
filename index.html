@@ -4,11 +4,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Generic Fantasy Adventure Game Title</title>
-	<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Press+Start+2P">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cinzel">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel">
 	<link rel="stylesheet" type="text/css" href="startover2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 
@@ -380,19 +379,20 @@
 			  			<input type="text" id="heroClassHere" class="cardInfo" name="heroClassHere" placeholder="Hero Class" readonly>
 			  			<input type="text" id="heroHPHere" class="cardInfo" name="heroHPHere" placeholder="100" readonly>
 			  			<input type="text" id="heroAPHere" class="cardInfo" name="heroAPHere" placeholder="10" readonly> -->
-			  			<label id="heroNameHere" class="cardInfo contentWidth"></label>
-			  			<label id="heroClassHere" class="cardInfo contentWidth"></label>
-			  			<label id="heroHPHere" class="cardInfo contentWidth"></label>
-			  			<label id="heroAPHere" class="cardInfo contentWidth"></label>
+			  			<label id="heroNameHere" class="cardInfo contentWidth">Hero</label>
+			  			<label id="heroClassHere" class="cardInfo contentWidth">Warrior</label>
+			  			<label id="heroHPHere" class="cardInfo contentWidth">200</label>
+			  			<label id="heroAPHere" class="cardInfo contentWidth">10</label>
 			  			<!-- <select id="heroSkillsHere" class="cardInfo" name="heroSkillsHere">
 			  				<option id="hsOption1" value="skill1">Skill 1</option>
 			  				<option id="hsOption2" value="skill2">Skill 2</option>
 			  				<option id="hsOption3" value="skill3">Skill 3</option>
 			  			</select> -->
 			  			<div id="heroSkillsHere" class="cardSkillBtns" name="heroSkillsHere">
-			  				<button id="hsOption1" value="skill1" disabled></button>
-				  			<button id="hsOption2" value="skill2" disabled></button>
-				  			<button id="hsOption3" value="skill3" disabled></button>
+			  				<button id="hsOption1" value="skill1"></button>
+				  			<button id="hsOption2" value="skill2"></button>
+				  			<button id="hsOption3" value="skill3"></button>
+				  			<button id="hsOption4" value="skill4">Basic Attack</button>
 			  			</div>
   					</div>
 		  		</div>
@@ -434,10 +434,10 @@
 			  			<input type="text" id="member1ClassHere" class="cardInfo" name="member1ClassHere" placeholder="Member 1 Class" readonly>
 			  			<input type="text" id="member1HPHere" class="cardInfo" name="member1HPHere" placeholder="100" readonly>
 			  			<input type="text" id="member1APHere" class="cardInfo" name="member1APHere" placeholder="10" readonly> -->
-			  			<label id="member1NameHere" class="cardInfo contentWidth"></label>
-			  			<label id="member1ClassHere" class="cardInfo contentWidth"></label>
-			  			<label id="member1HPHere" class="cardInfo contentWidth"></label>
-			  			<label id="member1APHere" class="cardInfo contentWidth"></label>
+			  			<label id="member1NameHere" class="cardInfo contentWidth">friend 1</label>
+			  			<label id="member1ClassHere" class="cardInfo contentWidth">rogue</label>
+			  			<label id="member1HPHere" class="cardInfo contentWidth">150</label>
+			  			<label id="member1APHere" class="cardInfo contentWidth">10</label>
 			  			<!-- <select id="member1SkillsHere" class="cardInfo" name="member1SkillsHere">
 			  				<option id="cs1Option1" value="skill1">Skill 1</option>
 			  				<option id="cs1Option2" value="skill2">Skill 2</option>
@@ -447,6 +447,7 @@
 			  				<button id="cs1Option1" value="skill1" disabled></button>
 				  			<button id="cs1Option2" value="skill2" disabled></button>
 				  			<button id="cs1Option3" value="skill3" disabled></button>
+				  			<button id="cs1Option4" value="skill4">slash</button>
 			  			</div>
   					</div>
 		  		</div>
@@ -488,10 +489,10 @@
 			  			<input type="text" id="member2ClassHere" class="cardInfo" name="member2ClassHere" placeholder="Member 2 Class" readonly>
 			  			<input type="text" id="member2HPHere" class="cardInfo" name="member2HPHere" placeholder="100" readonly>
 			  			<input type="text" id="member2APHere" class="cardInfo" name="member2APHere" placeholder="10" readonly> -->
-			  			<label id="member2NameHere" class="cardInfo contentWidth"></label>
-			  			<label id="member2ClassHere" class="cardInfo contentWidth"></label>
-			  			<label id="member2HPHere" class="cardInfo contentWidth"></label>
-			  			<label id="member2APHere" class="cardInfo contentWidth"></label>
+			  			<label id="member2NameHere" class="cardInfo contentWidth">friend 2</label>
+			  			<label id="member2ClassHere" class="cardInfo contentWidth">cleric</label>
+			  			<label id="member2HPHere" class="cardInfo contentWidth">150</label>
+			  			<label id="member2APHere" class="cardInfo contentWidth">10</label>
 			  			<!-- <select id="member2SkillsHere" class="cardInfo" name="member2SkillsHere">
 			  				<option id="cs2Option1" value="skill1">Skill 1</option>
 			  				<option id="cs2Option2" value="skill2">Skill 2</option>
@@ -501,6 +502,7 @@
 			  				<button id="cs2Option1" value="skill1" disabled></button>
 				  			<button id="cs2Option2" value="skill2" disabled></button>
 				  			<button id="cs2Option3" value="skill3" disabled></button>
+				  			<button id="cs2Option4" value="skill4">Bonk</button>
 			  			</div>
   					</div>
 		  		</div>
@@ -542,10 +544,10 @@
 			  			<input type="text" id="member3ClassHere" class="cardInfo" name="member3ClassHere" placeholder="Member 3 Class" readonly>
 			  			<input type="text" id="member3HPHere" class="cardInfo" name="member3HPHere" placeholder="100" readonly>
 			  			<input type="text" id="member3APHere" class="cardInfo" name="member3APHere" placeholder="10" readonly> -->
-			  			<label id="member3NameHere" class="cardInfo contentWidth"></label>
-			  			<label id="member3ClassHere" class="cardInfo contentWidth"></label>
-			  			<label id="member3HPHere" class="cardInfo contentWidth"></label>
-			  			<label id="member3APHere" class="cardInfo contentWidth"></label>
+			  			<label id="member3NameHere" class="cardInfo contentWidth">friend 3</label>
+			  			<label id="member3ClassHere" class="cardInfo contentWidth">wizard</label>
+			  			<label id="member3HPHere" class="cardInfo contentWidth">100</label>
+			  			<label id="member3APHere" class="cardInfo contentWidth">10</label>
 			  			<!-- <select id="member3SkillsHere" class="cardInfo" name="member3SkillsHere">
 			  				<option id="cs3Option1" value="skill1">Skill 1</option>
 			  				<option id="cs3Option2" value="skill2">Skill 2</option>
@@ -555,6 +557,7 @@
 			  				<button id="cs3Option1" value="skill1" disabled></button>
 				  			<button id="cs3Option2" value="skill2" disabled></button>
 				  			<button id="cs3Option3" value="skill3" disabled></button>
+				  			<button id="cs3Option4" value="skill4">Stab</button>
 			  			</div>
   					</div>
 		  		</div>
@@ -824,6 +827,7 @@
 					<li id="userSkill1"></li>
 					<li id="userSkill2"></li>
 					<li id="userSkill3"></li>
+					<li id="userSkill4"></li>
 				</ul>
 			</p>
 		</div>
@@ -903,24 +907,29 @@
 			<div id="screenArea" class="backGP">
 				<img src="johannes-plenio-1vzLW-ihJaM-unsplash.jpg" width="750" height="500">
 
-				<div id="char1" class="charP">
-					<img src="Characters/Sprites/cat-pixel-art-pusheen-cat-dfa2f55fd83811d482b01d591331ec29.png" width="100" height="100">
+				<div id="char1" class="charP" title="Whiskersnail">
+					<p class="spriteHP">500</p>
+					<img src="Characters/Sprites/Whiskersnail.png" width="80" height="80" class="animate__animated">
 				</div>
 
-				<div id="char2" class="charP1">
-					<img src="Characters/Sprites/grumpy-cat-pusheen-gif-tenor-cat-a1817e64cc820a15992ebd249931fafe.png" width="80" height="80">
+				<div id="char2" class="charP1" title="Vampurr">
+					<p class="spriteHP">500</p>
+					<img src="Characters/Sprites/Vampurr.png" width="80" height="80" class="animate__animated">
 				</div>
 
-				<div id="char3" class="charP2">
-					<img src="Characters/Sprites/cat-food-kitten-pusheen-tenor-cat-f2db61c5715958774464f46361baa363.png" width="80" height="80">
+				<div id="char3" class="charP2" title="Scorpmeow">
+					<p class="spriteHP">500</p>
+					<img src="Characters/Sprites/Scorpmeow.png" width="80" height="80" class="animate__animated">
 				</div>
 
-				<div id="char4" class="charP3">
-					<img src="Characters/Sprites/pusheen-cat-telegram-sticker-clip-art-cat-90191b74176e1a890157acdb43b8aac3.png" width="100" height="100">
+				<div id="char4" class="charP3" title="Spawider">
+					<p class="spriteHP">500</p>
+					<img src="Characters/Sprites/Spawider.png" width="80" height="80" class="animate__animated">
 				</div>
 
-				<div id="char5" class="charP4">
-					<img src="Characters/Sprites/pixel-art-bead-pattern-cute-ghost-ea58aeae627b8ea5ec3efb8ce9f43c18.png" width="80" height="80">
+				<div id="char5" class="charP4" title="Octopuss">
+					<p class="spriteHP">500</p>
+					<img src="Characters/Sprites/Octopuss.png" width="80" height="80" class="animate__animated">
 				</div>
 				
 			</div>

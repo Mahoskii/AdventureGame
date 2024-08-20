@@ -155,18 +155,19 @@ const imgBtn5 = document.getElementById('imgBtn5');
 const imgBtn6 = document.getElementById('imgBtn6');
 const confirmBTN3 = document.getElementById('confirmBTN3');
 // ******INFORMATION******
-const userName =document.getElementById('userName');
-const userClass =document.getElementById('userClass');
-const userLooks =document.getElementById('userLooks');
-const userStr =document.getElementById('userStr');
-const userDex =document.getElementById('userDex');
-const userCon =document.getElementById('userCon');
-const userInt =document.getElementById('userInt');
-const userWis =document.getElementById('userWis');
-const userCha =document.getElementById('userCha');
-const userSkill1 =document.getElementById('userSkill1');
-const userSkill2 =document.getElementById('userSkill2');
-const userSkill3 =document.getElementById('userSkill3');
+const userName = document.getElementById('userName');
+const userClass = document.getElementById('userClass');
+const userLooks = document.getElementById('userLooks');
+const userStr = document.getElementById('userStr');
+const userDex = document.getElementById('userDex');
+const userCon = document.getElementById('userCon');
+const userInt = document.getElementById('userInt');
+const userWis = document.getElementById('userWis');
+const userCha = document.getElementById('userCha');
+const userSkill1 = document.getElementById('userSkill1');
+const userSkill2 = document.getElementById('userSkill2');
+const userSkill3 = document.getElementById('userSkill3');
+const userSkill4 = document.getElementById('userSkill4');
 // PLAYER PORTRAIT
 const playerImg1 = document.getElementById('playerImg1');
 const playerImg2 = document.getElementById('playerImg2');
@@ -241,6 +242,7 @@ const heroSkillsHere = document.getElementById('heroSkillsHere');
 const hsOption1 = document.getElementById('hsOption1');
 const hsOption2 = document.getElementById('hsOption2');
 const hsOption3 = document.getElementById('hsOption3');
+const hsOption4 = document.getElementById('hsOption4');
 // ******COMPANION INFO******
 const member1NameHere = document.getElementById('member1NameHere');
 const member1ClassHere = document.getElementById('member1ClassHere');
@@ -250,7 +252,8 @@ const member1SkillsHere = document.getElementById('member1SkillsHere');
 const cs1Option1 = document.getElementById('cs1Option1');
 const cs1Option2 = document.getElementById('cs1Option2');
 const cs1Option3 = document.getElementById('cs1Option3');
-let comp1Array = [member1NameHere, member1ClassHere, member1HPHere, member1APHere, cs1Option1, cs1Option2, cs1Option3];
+const cs1Option4 = document.getElementById('cs1Option4');
+let comp1Array = [member1NameHere, member1ClassHere, member1HPHere, member1APHere, cs1Option1, cs1Option2, cs1Option3, cs1Option4];
 const member2NameHere = document.getElementById('member2NameHere');
 const member2ClassHere = document.getElementById('member2ClassHere');
 const member2HPHere = document.getElementById('member2HPHere');
@@ -259,7 +262,8 @@ const member2SkillsHere = document.getElementById('member2SkillsHere');
 const cs2Option1 = document.getElementById('cs2Option1');
 const cs2Option2 = document.getElementById('cs2Option2');
 const cs2Option3 = document.getElementById('cs2Option3');
-let comp2Array = [member2NameHere, member2ClassHere, member2HPHere, member2APHere, cs2Option1, cs2Option2, cs2Option3];
+const cs2Option4 = document.getElementById('cs2Option4');
+let comp2Array = [member2NameHere, member2ClassHere, member2HPHere, member2APHere, cs2Option1, cs2Option2, cs2Option3, cs2Option4];
 const member3NameHere = document.getElementById('member3NameHere');
 const member3ClassHere = document.getElementById('member3ClassHere');
 const member3HPHere = document.getElementById('member3HPHere');
@@ -268,107 +272,569 @@ const member3SkillsHere = document.getElementById('member3SkillsHere');
 const cs3Option1 = document.getElementById('cs3Option1');
 const cs3Option2 = document.getElementById('cs3Option2');
 const cs3Option3 = document.getElementById('cs3Option3');
-let comp3Array = [member3NameHere, member3ClassHere, member3HPHere, member3APHere, cs3Option1, cs3Option2, cs3Option3];
+const cs3Option4 = document.getElementById('cs3Option4');
+let comp3Array = [member3NameHere, member3ClassHere, member3HPHere, member3APHere, cs3Option1, cs3Option2, cs3Option3, cs3Option4];
+// ******SPRITES******
+const char1 = document.getElementById('char1');
+const char2 = document.getElementById('char2');
+const char3 = document.getElementById('char3');
+const char4 = document.getElementById('char4');
+const char5 = document.getElementById('char5');
 
 // PLAYER INFO
 let playerObject = {};
 
 //****************************************SKILLS****************************************
 class Skill {
-	constructor(name, img, role, info, stats){
+	constructor(name, img, role, info, stats, usage, apCost, dmgBonus){
 		this.name = name;
 		this.img = img;
 		this.role = role;
 		this.info = info;
 		this.stats = stats;
-	}
+		this.usage = usage;
+		this.apCost = apCost;
+		this.dmgBonus = dmgBonus;
+	};
 
 	// skill functions
+
+	// Basic Attack
+
+	Attack(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(16, 5);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 14);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	// =====WARRIOR=====
+
+	// ~*~*~*~attack skills~*~*~*~
+
+	ShieldBonk(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 20);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 28);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	Slash(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 32);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	HiltStab(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		let dmgNumber2;
+		dmgNumber = damageNumberGenerator(6, 5);
+		dmgNumber2 = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= (dmgNumber);
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, 'hilt bash', combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 7);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500);
+		};
+
+		setTimeout(() => {
+			if(playerTarget.innerText > 0){
+				playerTarget.innerText -= (dmgNumber2);
+				addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber2, 'stab', combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 30);
+				setTimeout(()=>{
+					animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+				}, 500);
+			};
+		}, 700);
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	// ~*~*~*~buff/debuff attacks~*~*~*~
+
+	CatnipScent(){
+		skillSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		playerObject.threatP += 30;
+		// isActive = true;
+		combatActionObject.skillname.disabled = true;
+		addMessage(`${combatActionObject.playerName}'s threat level has increased`);
+	};
+
+	Loaf(){
+		skillSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		playerObject.defenceP += 10;
+		// isActive = true;
+		combatActionObject.skillname.disabled = true;
+		addMessage(`Your defence has increased`);
+		console.log(skillSelected);
+	};
+
+	Hiss(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		// isActive = true;
+		// ~~~~~~~DONT FORGET TO REMOVE THIS LATER!!!!!!~~~~~~~
+		let fearResistant = false;
+		// combatActionObject.skillname.disabled = true;
+		if(fearResistant === false){
+			combatActionObject.wholeTarget.classList.add('fearActive');
+			addMessage(`${combatActionObject.playerName} has hissed at ${combatActionObject.wholeTarget.title}. ${combatActionObject.wholeTarget.title} now cowers in fear and will not attack on it's next turn.`);
+		};
+	};
+
+	// =====ROGUE=====
+
+	// ~*~*~*~attack skills~*~*~*~
+
+	Pounce(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 20);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 28);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	TripleStab(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		let dmgNumber2;
+		let dmgNumber3;
+		dmgNumber = damageNumberGenerator(11, 17);
+		dmgNumber2 = damageNumberGenerator(11, 17);
+		dmgNumber3 = damageNumberGenerator(11, 17);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= (dmgNumber);
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 25);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500);
+		};
+
+		setTimeout(() => {
+			if(playerTarget.innerText > 0){
+				playerTarget.innerText -= (dmgNumber2);
+				addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber2, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 25);
+				setTimeout(()=>{
+					animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+				}, 500);
+			};
+		}, 700);
+
+		setTimeout(() => {
+			if(playerTarget.innerText > 0){
+				playerTarget.innerText -= (dmgNumber3);
+				addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber3, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 25);
+				setTimeout(()=>{
+					animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+				}, 500);
+			};
+		}, 1400);
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	KnifeThrow(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 20);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 28);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	// ~*~*~*~buff/debuff attacks~*~*~*~
+
+	Lurk(){
+		skillSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		playerObject.threatP = 0;
+		lurking = true;
+		combatActionObject.skillname.disabled = true;
+		addMessage(`${combatActionObject.playerName} is now lurking in the shadows`);
+	};
+
+	DeadlyScents(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		staggerChance = true;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 15);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 22);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+		
+	};
+
+	HideandHeal(){
+		skillSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		playerObject.threatP = 0;
+		let healValue = 10;
+		if(Number(combatActionObject.playerHP) + Number(healValue) >= Number(playerObject.hp)){
+			heroHPHere.innerText = Number(playerObject.hp);
+		} else {
+			heroHPHere.innerText = Number(heroHPHere.innerText) + healValue;
+		};
+		addMessage(`${combatActionObject.playerName} has hid from the enemies, healed and lost all aggro`);
+	};
+
+	// =====RANGER=====
+
+	// ~*~*~*~attack skills~*~*~*~
+
+	RapidFire(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		let dmgNumber2;
+		let dmgNumber3;
+		dmgNumber = damageNumberGenerator(11, 17);
+		dmgNumber2 = damageNumberGenerator(11, 17);
+		dmgNumber3 = damageNumberGenerator(11, 17);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= (dmgNumber);
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 25);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500);
+		};
+
+		setTimeout(() => {
+			if(playerTarget.innerText > 0){
+				playerTarget.innerText -= (dmgNumber2);
+				addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber2, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 25);
+				setTimeout(()=>{
+					animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+				}, 500);
+			};
+		}, 700);
+
+		setTimeout(() => {
+			if(playerTarget.innerText > 0){
+				playerTarget.innerText -= (dmgNumber3);
+				addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber3, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 25);
+				setTimeout(()=>{
+					animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+				}, 500);
+			};
+		}, 1400);
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	ChargedShot(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 32);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	FireArrow(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 32);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	// ~*~*~*~buff/debuff attacks~*~*~*~
+
+	// =====BARD=====
+
+	// ~*~*~*~attack skills~*~*~*~
+
+	PawBash(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 32);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	SongofmyPeople(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 32);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	FirstRowTicket(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		let dmgNumber;
+		dmgNumber = damageNumberGenerator(11, 25);
+		if(playerTarget.innerText > 0){
+			playerTarget.innerText -= dmgNumber;
+			addDmgNoteAndAnimation(combatActionObject.playerName, dmgNumber, this.name, combatActionObject.wholeTarget.title, combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX', 32);
+			setTimeout(()=>{
+				animationRemoval(combatActionObject.wholeTarget.querySelector('img'), 'animate__headShake', 'animate__shakeX');
+			}, 500); 
+		};
+
+		if(playerTarget.innerText <= 0){
+			enemyDefeated(combatActionObject.wholeTarget.querySelector('img'), combatActionObject.wholeTarget, combatActionObject.wholeTarget.title);
+		};
+	};
+
+	// ~*~*~*~buff/debuff attacks~*~*~*~
+
+	DramaticMewling(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		playerObject.threatP = 0;
+		distracted = true;
+		addMessage(`${combatActionObject.playerName} has distracted ${combatActionObject.wholeTarget.title} and lost all aggro.`);
+	};	
+
+	InspiringSong(){
+		skillSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		inspiration = true;
+		addMessage(`${combatActionObject.playerName} has inspired the party, granting them damage bonus for their next attack.`);
+	};
+
+	Lullaby(playerTarget){
+		skillSelected = false;
+		targetSelected = false;
+		heroAPHere.innerText -= this.apCost;
+		sleeping = true;
+		addMessage(`${combatActionObject.playerName} has put ${combatActionObject.wholeTarget.title} to sleep.`);
+	};
+
+	// =====CLERIC=====
+
+	// ~*~*~*~attack skills~*~*~*~
+
+	// ~*~*~*~buff/debuff attacks~*~*~*~
+
+	// =====WIZARD=====
+
+	// ~*~*~*~attack skills~*~*~*~
+
+	// ~*~*~*~buff/debuff attacks~*~*~*~
 };
+
+// *****+++++=====BASIC ATTACKS=====+++++*****
+
+const basicattack = new Skill("Basic Attack", "tbd", "All", "You preform a basic melee attack with your weapon", "Assisting stats: tbd", 'enemy', 2, 0);
 
 // *****+++++=====WARRIOR SKILLS=====+++++*****
 
 // Combat Skills
-const skill1 = new Skill("tbd", "Skills/Warrior/warrior.jpg", "Warrior", "tbd", "Assisting stats: tbd");
-const skill2 = new Skill("tbd", "Skills/Warrior/warrior.jpg", "Warrior", "tbd", "Assisting stats: tbd");
-const skill3 = new Skill("tbd", "Skills/Warrior/warrior.jpg", "Warrior", "tbd", "Assisting stats: tbd");
+const shieldbonk = new Skill("Shield Bonk", "Skills/Warrior/warrior.jpg", "Warrior", "You bonk an enemy on the head with your shield", "Assisting stats: tbd", 'enemy', 3, 0);
+const slash = new Skill("Slash", "Skills/Warrior/warrior.jpg", "Warrior", "You slash your enemy with your sword", "Assisting stats: tbd", 'enemy', 3, 0);
+const hiltstab = new Skill("Hilt Stab", "Skills/Warrior/warrior.jpg", "Warrior", "You hit your enemy with the hilt of your sword and proceed to stab them", "Assisting stats: tbd", 'enemy', 3, 0);
 
 // Buff/Debuff Skills
-const catnipScent = new Skill("Catnip Scent", "Skills/Warrior/Catnip_Scent.png", "Warrior", "You pop open a bag of catnip, causing all enemies to focus on attacking you.", "Assisting stats: tbd");
-const loaf = new Skill("Loaf", "Skills/Warrior/Loaf.png", "Warrior", "You change into a defensive loaf position, reducing all damage taken for 2 turns", "Assisting stats: tbd");
-const hiss = new Skill("Hiss", "Skills/Warrior/Hiss.png", "Warrior", "You hiss aggressively at your enemies, causing them to shudder in fear.", "Assisting stats: tbd");
+const catnipscent = new Skill("Catnip Scent", "Skills/Warrior/Catnip_Scent.png", "Warrior", "You pop open a bag of catnip, causing all enemies to focus on attacking you.", "Assisting stats: tbd", 'self', 3, 0);
+const loaf = new Skill("Loaf", "Skills/Warrior/Loaf.png", "Warrior", "You change into a defensive loaf position, reducing all damage taken for 2 turns", "Assisting stats: tbd", 'self', 3, 0);
+const hiss = new Skill("Hiss", "Skills/Warrior/Hiss.png", "Warrior", "You hiss aggressively at your enemies, causing them to shudder in fear.", "Assisting stats: tbd", 'enemy', 3, 0);
 
-const warriorSkillArray = [skill1, skill2, skill3, catnipScent, loaf, hiss];
+const warriorSkillArray = [shieldbonk, slash, hiltstab, catnipscent, loaf, hiss, basicattack];
 
 // *****+++++=====ROGUE SKILLS=====+++++*****
 
 // Combat Skills
-const skill7 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
-const skill8 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
-const skill9 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+const pounce = new Skill("Pounce", "Skills/Rogue/rogue.jpg", "Rogue", "Backstab your enemy (extra damage while lurk is active)", "Assisting stats: tbd", 'enemy', 3, 0);
+const triplestab = new Skill("Triple Stab", "Skills/Rogue/rogue.jpg", "Rogue", "Stab your enemy three times in a row", "Assisting stats: tbd", 'enemy', 3, 0);
+const knifethrow = new Skill("Knife Throw", "Skills/Rogue/rogue.jpg", "Rogue", "Throw a throwing knife at an enemy", "Assisting stats: tbd", 'enemy', 3, 0);
 
 // Buff/Debuff Skills
-const skill10 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
-const skill11 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
-const skill12 = new Skill("tbd", "Skills/Rogue/rogue.jpg", "Rogue", "tbd", "Assisting stats: tbd");
+const lurk = new Skill("Lurk", "Skills/Rogue/rogue.jpg", "Rogue", "Go invisible and lose all agro on you", "Assisting stats: tbd", 'self', 3, 0);
+const deadlyscents = new Skill("Deadly Scents", "Skills/Rogue/rogue.jpg", "Rogue", "Stagger your enemy by farting in their general direction (extra damage while lurk is active)", "Assisting stats: tbd", 'enemy', 3, 0);
+const hideandheal = new Skill("Hide and Heal", "Skills/Rogue/rogue.jpg", "Rogue", "You sneakily hide from your enemies for a short time to recover some health", "Assisting stats: tbd", 'self', 3, 0);
 
-const rogueSkillArray = [skill7, skill8, skill9, skill10, skill11, skill12];
+const rogueSkillArray = [pounce, triplestab, knifethrow, lurk, deadlyscents, hideandheal, basicattack];
 
 // *****+++++=====RANGER SKILLS=====+++++*****
 
 // Combat Skills
-const skill13 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
-const skill14 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
-const skill15= new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+const rapidfire = new Skill("Rapid Fire", "Skills/Ranger/ranger.jpg", "Ranger", "Quickly fire 3 arrows at an enemy", "Assisting stats: tbd", 'enemy', 3, 0);
+const chargedshot = new Skill("Charged Shot", "Skills/Ranger/ranger.jpg", "Ranger", "Fire a powerful fully charged arrow at your enemy", "Assisting stats: tbd", 'enemy', 3, 0);
+const firearrow = new Skill("Fire Arrow", "Skills/Ranger/ranger.jpg", "Ranger", "Shoot a flaming arrow at your enemy.", "Assisting stats: tbd", 'enemy', 3, 0);
 
 // Buff/Debuff Skills
-const skill16 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
-const skill17 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
-const skill18 = new Skill("tbd", "Skills/Ranger/ranger.jpg", "Ranger", "tbd", "Assisting stats: tbd");
+const huntersinstincts = new Skill("Hunter's Instincts", "Skills/Ranger/ranger.jpg", "Ranger", "Expose your enemy's weak spots, making them receive more damage from the next attack (yours or an ally's).", "Assisting stats: tbd", 'enemy', 3, 10);
+const pacify = new Skill("Pacify", "Skills/Ranger/ranger.jpg", "Ranger", "Use your knowledge of creatures to try and pacify an enemy. If successful, the enemy will not attack on its next turn.", "Assisting stats: tbd", 'enemy', 3, 0);
+const bowproficiency= new Skill("Bow Proficiency", "Skills/Ranger/ranger.jpg", "Ranger", "Increase the damage for your next attack while active.", "Assisting stats: tbd", 'self', 3, 12);
 
-const rangerSkillArray = [skill13, skill14, skill15, skill16, skill17, skill18];
+const rangerSkillArray = [rapidfire, chargedshot, firearrow, huntersinstincts, pacify, bowproficiency, basicattack];
 
 // *****+++++=====BARD SKILLS=====+++++*****
 
 // Combat Skills
-const pawBash = new Skill("Paw Bash", "Skills/Bard/Paw_Bash.png", "Bard", "play on your enemies as if they were drums", "Assisting stats: tbd");
-const songOfMyPeople = new Skill("Song of my people", "Skills/Bard/Song_of_my people.png", "Bard", "You sing the song of your people, sending strong sound waves that damage enemies.", "Assisting stats: tbd");
-const skill21 = new Skill("tbd", "Skills/Bard/bard.jpg", "Bard", "tbd");
+const pawbash = new Skill("Paw Bash", "Skills/Bard/Paw_Bash.png", "Bard", "play on your enemies as if they were drums", "Assisting stats: tbd", 'enemy', 3, 0);
+const songofmypeople = new Skill("Song of my People", "Skills/Bard/Song_of_my people.png", "Bard", "You sing the song of your people, sending strong sound waves that damage enemies.", "Assisting stats: tbd", 'enemy', 3, 0);
+const firstrowticket = new Skill("First Row Ticket", "Skills/Bard/bard.jpg", "Bard", "You smack your enemy with your lute.", "Assisting stats: tbd", 'enemy', 3, 0);
 
 // Buff/Debuff Skills
-const dramaticMewling = new Skill("Dramatic Mewling", "Skills/Bard/Dramatic_Mewling.png", "Bard", "You go into an elaborate and dramatic performance, faking your glorious death in battle, distracting the enemies for the next turn, causing them to ignore you and losing all negative status effects.", "Assisting stats: tbd");
-const skill23 = new Skill("tbd", "Skills/Bard/bard.jpg", "Bard", "tbd", "Assisting stats: tbd");
-const skill24 = new Skill("tbd", "Skills/Bard/bard.jpg", "Bard", "tbd", "Assisting stats: tbd");
+const dramaticmewling = new Skill("Dramatic Mewling", "Skills/Bard/Dramatic_Mewling.png", "Bard", "You go into an elaborate and dramatic performance faking your glorious death in battle, distracting an enemy for the next turn and losing all aggro.", "Assisting stats: tbd", 'self', 3, 0);
+const inspiringsong = new Skill("Inspiring Song", "Skills/Bard/bard.jpg", "Bard", "You sing a song of inspiration giving everyone in the party a damage boost to their next attack.", "Assisting stats: tbd", 'ally', 3, 10);
+const lullaby = new Skill("Lullaby", "Skills/Bard/bard.jpg", "Bard", "You sing a calming song, causing an enemy to fall asleep.", "Assisting stats: tbd", 'enemy', 3, 0);
 
-const bardSkillArray = [pawBash, songOfMyPeople, skill21, dramaticMewling, skill23, skill24];
+const bardSkillArray = [pawbash, songofmypeople, firstrowticket, dramaticmewling, inspiringsong, lullaby, basicattack];
 
 // *****+++++=====CLERIC SKILLS=====+++++*****
 
 // Combat Skills
-const skill25 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
-const skill26 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
-const skill27 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+const hammerswing = new Skill("Hammer Swing", "Skills/Cleric/cleric.jpg", "Cleric", "you Swing your war hammer around, hitting your enemy.", "Assisting stats: tbd", 'enemy', 3, 0);
+const slam = new Skill("Slam", "Skills/Cleric/cleric.jpg", "Cleric", "You slam your war hammer on an enemy's head and staggering them for their next turn.", "Assisting stats: tbd", 'enemy', 3, 0);
+const doubletrouble = new Skill("Double Trouble", "Skills/Cleric/cleric.jpg", "Cleric", "You swing your war hammer around violently hitting your enemy twice in a row.", "Assisting stats: tbd", 'enemy', 3, 0);
 
 // Buff/Debuff Skills
-const skill28 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
-const skill29 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
-const skill30 = new Skill("tbd", "Skills/Cleric/cleric.jpg", "Cleric", "tbd", "Assisting stats: tbd");
+const purrfecthealth = new Skill("Purrfect Health", "Skills/Cleric/cleric.jpg", "Cleric", "You purr at your ally, restoring some of their HP back.", "Assisting stats: tbd", 'ally', 3, 0);
+const thenuggiecanticle = new Skill("The Nuggie Canticle", "Skills/Cleric/cleric.jpg", "Cleric", "You call upon the power of the Holy Chicken Nugget gaining extra damage for your next attack.", "Assisting stats: tbd", 'self', 3, 12);
+const prayerofprotection = new Skill("Prayer of Protection", "Skills/Cleric/cleric.jpg", "Cleric", "You silently give prayer and gain extra defense for your next turn for you or an ally.", "Assisting stats: tbd", 'ally', 3, 0);
 
-const clericSkillArray = [skill25, skill26, skill27, skill28, skill29, skill30];
+const clericSkillArray = [hammerswing, slam, doubletrouble, purrfecthealth, thenuggiecanticle, prayerofprotection, basicattack];
 
 // *****+++++=====WIZARD SKILLS=====+++++*****
 
 // Combat Skills
-const skill31 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
-const skill32 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
-const skill33 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
+const fireball = new Skill("Fire Ball", "Skills/Wizard/wizard.jpg", "Wizard", "You shoot a fire ball at your enemy.", "Assisting stats: tbd", 'enemy', 3, 0);
+const polymorph = new Skill("Polymorph", "Skills/Wizard/wizard.jpg", "Wizard", "You turn your enemy into a sheep for the next turn.", "Assisting stats: tbd", 'enemy', 3, 0);
+const icecrystals = new Skill("Ice Crystals", "Skills/Wizard/wizard.jpg", "Wizard", "You conjure magical icicles and shoot them at your enemy.", "Assisting stats: tbd", 'enemy', 3, 0);
 
 // Buff/Debuff Skills
-const lick = new Skill("Lick", "Skills/Wizard/Lick.png", "Wizard", "You lick yourself, magically hardening your fur for extra protection.", "Assisting stats: tbd");
-const tailWag = new Skill("Tail Wag", "Skills/Wizard/Tail_Wag.png", "Wizard", "You wag your tail playfully, magically mesmerizing the enemies and making them less aggressive towards you.", "Assisting stats: tbd");
-const skill36 = new Skill("tbd", "Skills/Wizard/wizard.jpg", "Wizard", "tbd", "Assisting stats: tbd");
+const lick = new Skill("Lick", "Skills/Wizard/Lick.png", "Wizard", "You lick yourself, magically hardening your fur for extra protection.", "Assisting stats: tbd", 'self', 3, 0);
+const tailwag = new Skill("Tail Wag", "Skills/Wizard/Tail_Wag.png", "Wizard", "You wag your tail playfully, magically mesmerizing the enemies and making them less aggressive towards you.", "Assisting stats: tbd", 'self', 3, 0);
+const magicalexcellence = new Skill("Magical Excellence", "Skills/Wizard/wizard.jpg", "Wizard", "Your next action does not cost AP points.", "Assisting stats: tbd", 'self', 3, 0);
 
-const wizardSkillArray = [skill31, skill32, skill33, lick, tailWag, skill36];
+const wizardSkillArray = [fireball, polymorph, icecrystals, lick, tailwag, magicalexcellence, basicattack];
+
+// *****+++++=====All Skills Array=====+++++*****
+const allPlayerSkillsArray = [shieldbonk, slash, hiltstab, catnipscent, loaf, hiss, pounce, triplestab, knifethrow, lurk, deadlyscents, hideandheal, rapidfire, chargedshot, firearrow, huntersinstincts, pacify, bowproficiency, pawbash, songofmypeople, firstrowticket, dramaticmewling, inspiringsong, lullaby, hammerswing, slam, doubletrouble, purrfecthealth, thenuggiecanticle, prayerofprotection, fireball, polymorph, icecrystals, lick, tailwag, magicalexcellence];
 
 //**************************************FUNCTIONS**************************************
 // hiding a component from the page
@@ -1017,6 +1483,7 @@ function whichSkills(){
 	userSkill1.innerText = `Skill 1: ${pSkills[0]}`;
 	userSkill2.innerText = `Skill 2: ${pSkills[1]}`;
 	userSkill3.innerText = `Skill 3: ${pSkills[2]}`;
+	userSkill4.innerText = `Skill 4: Basic Attack`;
 };
 
 // GOING FROM SKILL PAGE TO CHARACTER CUSTOMAZATION PAGE
@@ -1337,7 +1804,7 @@ comp6btn.addEventListener('click', companionSelect);
 //~~~~~~CHARACTER OBJECTS~~~~~~
 
 class Companions{
-	constructor(name, img, role, info, str, dex, con, int, wis, cha, HP, AP, skill1, skill2, skill3){
+	constructor(name, img, role, info, str, dex, con, int, wis, cha, HP, AP, skill1, skill2, skill3, skill4, cThreatP, cDefenceP){
 		this.name = name;
 		this.img = img;
 		this.role = role;
@@ -1353,17 +1820,20 @@ class Companions{
 		this.skill1 = skill1;
 		this.skill2 = skill2;
 		this.skill3 = skill3;
+		this.skill4 = skill4;
+		this.cThreatP = cThreatP;
+		this.cDefenceP = cDefenceP;
 	};
 
 	// Companion Skills
 };
 
-const companion1 = new Companions("Companion 1", comp1img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill1", "skill2", "skill3");
-const companion2 = new Companions("Companion 2", comp2img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill4", "skill5", "skill6");
-const companion3 = new Companions("Companion 3", comp3img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill7", "skill8", "skill9");
-const companion4 = new Companions("Companion 4", comp4img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill10", "skill11", "skill12");
-const companion5 = new Companions("Companion 5", comp5img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill13", "skill14", "skill15");
-const companion6 = new Companions("Companion 6", comp6img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill16", "skill17", "skill18");
+const companion1 = new Companions("Companion 1", comp1img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill1", "skill2", "skill3", "Basic Attack", 5);
+const companion2 = new Companions("Companion 2", comp2img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill4", "skill5", "skill6", "Basic Attack", 5);
+const companion3 = new Companions("Companion 3", comp3img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill7", "skill8", "skill9", "Basic Attack", 5);
+const companion4 = new Companions("Companion 4", comp4img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill10", "skill11", "skill12", "Basic Attack", 5);
+const companion5 = new Companions("Companion 5", comp5img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill13", "skill14", "skill15", "Basic Attack", 5);
+const companion6 = new Companions("Companion 6", comp6img.src, "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", "tbd", 10, "skill16", "skill17", "skill18", "Basic Attack", 5);
 
 // // **********COMPANION 1**********
 // let companion1Object = {
@@ -1448,6 +1918,7 @@ function playerInfo(){
 	hsOption1.innerText = `${Object.values(playerObject)[5][0]}`;
 	hsOption2.innerText = `${Object.values(playerObject)[5][1]}`;
 	hsOption3.innerText = `${Object.values(playerObject)[5][2]}`;
+	hsOption4.innerText = `Basic Attack`;
 };
 
 // CHOOSING THE CORRECT COMPANION PICTURE
@@ -1505,6 +1976,7 @@ function companionsInfo(){
 			allCompArrays[k][4].innerText = companion1.skill1;
 			allCompArrays[k][5].innerText = companion1.skill2;
 			allCompArrays[k][6].innerText = companion1.skill3;
+			allCompArrays[k][7].innerText = companion1.skill4;
 			break;
 		case 2:
 			allCompArrays[k][0].innerText = companion2.name;
@@ -1514,6 +1986,7 @@ function companionsInfo(){
 			allCompArrays[k][4].innerText = companion2.skill1;
 			allCompArrays[k][5].innerText = companion2.skill2;
 			allCompArrays[k][6].innerText = companion2.skill3;
+			allCompArrays[k][7].innerText = companion2.skill4;
 			break;
 		case 3:
 			allCompArrays[k][0].innerText = companion3.name;
@@ -1523,6 +1996,7 @@ function companionsInfo(){
 			allCompArrays[k][4].innerText = companion3.skill1;
 			allCompArrays[k][5].innerText = companion3.skill2;
 			allCompArrays[k][6].innerText = companion3.skill3;
+			allCompArrays[k][7].innerText = companion3.skill4;
 			break;
 		case 4:
 			allCompArrays[k][0].innerText = companion4.name;
@@ -1532,6 +2006,7 @@ function companionsInfo(){
 			allCompArrays[k][4].innerText = companion4.skill1;
 			allCompArrays[k][5].innerText = companion4.skill2;
 			allCompArrays[k][6].innerText = companion4.skill3;
+			allCompArrays[k][7].innerText = companion4.skill4;
 			break;
 		case 5:
 			allCompArrays[k][0].innerText = companion5.name;
@@ -1541,6 +2016,7 @@ function companionsInfo(){
 			allCompArrays[k][4].innerText = companion5.skill1;
 			allCompArrays[k][5].innerText = companion5.skill2;
 			allCompArrays[k][6].innerText = companion5.skill3;
+			allCompArrays[k][7].innerText = companion5.skill4;
 			break;
 		case 6:
 			allCompArrays[k][0].innerText = companion6.name;
@@ -1550,6 +2026,7 @@ function companionsInfo(){
 			allCompArrays[k][4].innerText = companion6.skill1;
 			allCompArrays[k][5].innerText = companion6.skill2;
 			allCompArrays[k][6].innerText = companion6.skill3;
+			allCompArrays[k][7].innerText = companion6.skill4;
 			break;
 		default:
 			console.log('something aint working here');
@@ -1582,8 +2059,10 @@ confirmBTN4.addEventListener('click', ()=> {
 			class: playerClassIs,
 			portrait: userLooks.innerText,
 			hp: Math.round(100 * (0.2 * Number(con.value))),
-			ap: 10,
-			skills: pSkills
+			ap: 7,
+			skills: pSkills,
+			threatP: 5,
+			defenceP: 0
 		};
 		playerInfo();
 		companionsInfo();
@@ -1705,6 +2184,352 @@ nextBTN6.addEventListener('click',()=>{
 	};
 	return counter +=1;
 });
+
+// ************************************BATTLE SYSTEM************************************
+
+// ~*~*~*~*~*~*~*~TURN FUNCTIONS~*~*~*~*~*~*~*~
+// Skills and Effects variables
+// let isActive;
+let scared;
+let lurking;
+let staggerChance;
+let isPeaceful;
+let distracted;
+let sleeping;
+let morphed;
+let noAPCost;
+let inspiration;
+
+function whosTurn(){
+	let turnCounter;
+	
+};
+
+// ~*~*~*~*~*~*~*~SKILL TYPE~*~*~*~*~*~*~*~
+
+// this function is for figuring out if the skill is for attacking enemies, hellping allys or for self use
+
+let skillType;
+
+function findoutSkillType(skillName){
+	for(i = 0; i < allPlayerSkillsArray.length; i++){
+		if(skillName === allPlayerSkillsArray[i].name){
+			skillType = allPlayerSkillsArray[i].usage;
+			return skillType;
+		};
+	};
+};
+
+// allPlayerSkillsArray
+
+// ~*~*~*~*~*~*~*~ENEMIES~*~*~*~*~*~*~*~
+
+const spritesArray = [char1, char2, char3, char4, char5];
+
+class Enemies{
+	constructor(name, img, hp, fearResistant){
+		this.name = name;
+		this.img = img;
+		this.hp = hp;
+		this.fearResistant = fearResistant;
+	};
+
+	// Enemy Skills
+};
+
+const whiskersnail = new Enemies("Whiskersnail", "Characters/Sprites/Whiskersnail.png", 500, false);
+const vampurr = new Enemies("Vampurr", "Characters/Sprites/Vampurr.png", 500, false);
+const scorpmeow = new Enemies("Scorpmeow", "Characters/Sprites/Scorpmeow.png", 500, false);
+const spawider = new Enemies("Spawider", "Characters/Sprites/Spawider.png", 500, false);
+const octopuss = new Enemies("Octopuss", "Characters/Sprites/Octopuss.png", 500, false);
+
+// ~*~*~*~*~*~*~*~ATTACK BUILDING FUNCTIONS~*~*~*~*~*~*~*~
+
+let combatActionObject = {
+	playerName: "",
+	wholeTarget: "",
+	attackName: "",
+	skillname: "",
+	playerAP: "",
+	playerHP: ""
+};
+
+function damageNumberGenerator(numberRange, startingNumber){
+	let dmgNumber = Math.floor((Math.random()*numberRange)+startingNumber);
+	return dmgNumber;
+};
+
+function addMessage(message){
+	let myParagraph = document.createElement('p');
+	let myText = document.createTextNode(message);
+	gameTextArea.appendChild(myParagraph).classList.add('pMargin');
+	myParagraph.appendChild(myText);
+	// MAKING SURE THE SCROLL BAR IS ALWAYS AT THE BOTTOM SO WE CAN SEE THE NEW TEXT THAT IS ADDED
+	gameTextArea.scrollTop = gameTextArea.scrollHeight;
+};
+
+// function addDefeatedNote(target){
+// 	let myParagraph = document.createElement('p');
+// 	let myText = document.createTextNode(`${target} has been defeated!`);
+// 	gameTextArea.appendChild(myParagraph).classList.add('pMargin');
+// 	myParagraph.appendChild(myText);
+// 	// MAKING SURE THE SCROLL BAR IS ALWAYS AT THE BOTTOM SO WE CAN SEE THE NEW TEXT THAT IS ADDED
+// 	gameTextArea.scrollTop = gameTextArea.scrollHeight;
+// };
+
+function addDmgNoteAndAnimation(dmgDealer = `Pawl`, dmgNumber, atkName = 'Basic Attack', target, sprite, normalAnimation, criticalAnimation, critThreshold){
+	if(dmgNumber <= critThreshold){
+		addMessage(`${target} has been hit for ${dmgNumber} damage points from ${dmgDealer}'s ${atkName}`);
+		sprite.classList.add(normalAnimation);
+	};
+	if(dmgNumber > critThreshold){
+		addMessage(`${target} has taken a critical hit of ${dmgNumber} damage points from ${dmgDealer}'s ${atkName}`);
+		sprite.classList.add(criticalAnimation);
+	};
+};
+
+function animationRemoval(sprite, normalAnimation, criticalAnimation){
+	if(sprite.classList.contains(normalAnimation)){
+		sprite.classList.remove(normalAnimation);
+	};
+	if(sprite.classList.contains(criticalAnimation)){
+		sprite.classList.remove(criticalAnimation);
+	};
+};
+
+function enemyDefeated(sprite, target, name){
+	sprite.classList.add('animate__flash');
+	setTimeout(() => {
+		hiding(target);
+	}, 1500);
+	// addDefeatedNote(name);
+	addMessage(`${name} has been defeated!`);
+};
+
+// FIX THIS FUNCTION
+function checkAP(target){
+	if(combatActionObject.playerAP < this.apCost/allPlayerSkillsArray[i].apCost){
+		combatActionObject.skillname.disabled = true;
+	};
+
+	if(combatActionObject.playerAP < this.apCost/allPlayerSkillsArray[i].apCost){
+		combatActionObject.skillname.disabled = false;
+	};
+};
+
+
+let skillSelected = false;
+let targetSelected = false;
+// const heroSkills = heroSkillsHere.querySelectorAll('button');
+const heroSkills = [hsOption1, hsOption2, hsOption3, hsOption4];
+
+function whichSkillToUse(skillname){
+	let whichClass;
+	whichClass = playerClassIs;
+	let whichSkill = skillname.innerText.replace(/\s/g, "").toLowerCase();
+	console.log(whichClass);
+	
+	switch (whichClass) {
+		
+	case "Warrior":
+			console.log(whichSkill);
+			switch (whichSkill) {
+			case "shieldbonk":
+				warriorSkillArray[0].ShieldBonk(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "slash":
+				warriorSkillArray[1].Slash(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "hiltstab":
+				warriorSkillArray[2].HiltStab(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "catnipscent":
+				warriorSkillArray[3].CatnipScent();
+				break;
+			case "loaf":
+				warriorSkillArray[4].Loaf();
+				break;
+			case "hiss":
+				warriorSkillArray[5].Hiss(combatActionObject.wholeTarget);
+				break;
+			case "basicattack":
+				warriorSkillArray[6].Attack(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			default:
+				console.log('something aint working here 2');
+			};
+			
+		break;
+
+	case "Rogue":
+			console.log(whichSkill);
+			switch (whichSkill) {
+			case "pounce":
+				rogueSkillArray[0].Pounce(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "triplestab":
+				rogueSkillArray[1].TripleStab(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "knifethrow":
+				rogueSkillArray[2].KnifeThrow(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "lurk":
+				rogueSkillArray[3].Lurk();
+				break;
+			case "deadlyscents":
+				rogueSkillArray[4].DeadlyScents(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "hideandheal":
+				rogueSkillArray[5].HideandHeal();
+				break;
+			case "basicattack":
+				rogueSkillArray[6].Attack(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			default:
+				console.log('something aint working here 2');
+			};
+			
+		break;
+				
+	case "Ranger":
+			console.log(whichSkill);
+			switch (whichSkill) {
+			case "rapidfire":
+				rangerSkillArray[0].RapidFire(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "chargedshot":
+				rangerSkillArray[1].ChargedShot(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "firearrow":
+				rangerSkillArray[2].FireArrow(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "huntersinstincts":
+				rangerSkillArray[3].HuntersInstincts();
+				break;
+			case "pacify":
+				rangerSkillArray[4].Pacify(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "bowproficiency":
+				rangerSkillArray[5].BowProficiency();
+				break;
+			case "basicattack":
+				rangerSkillArray[6].Attack(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			default:
+				console.log('something aint working here 2');
+			};
+				
+		break;
+	case "Bard":
+			console.log(whichSkill);
+			switch (whichSkill) {
+			case "pawbash":
+				bardSkillArray[0].PawBash(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "songofmypeople":
+				bardSkillArray[1].SongofmyPeople(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "firstrowticket":
+				bardSkillArray[2].FirstRowTicket(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "dramaticmewling":
+				bardSkillArray[3].DramaticMewling(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "inspiringsong":
+				bardSkillArray[4].InspiringSong();
+				break;
+			case "lullaby":
+				bardSkillArray[5].Lullaby(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			case "basicattack":
+				bardSkillArray[6].Attack(combatActionObject.wholeTarget.querySelector('p'));
+				break;
+			default:
+				console.log('something aint working here 2');
+			};
+
+		break;
+	// case "Cleric":
+				
+	// 	break;
+	// case "Wizard":
+			
+	// 	break;
+	default:
+		console.log('something aint working here');
+	};
+	
+};
+
+
+// ~*~*~*~*~*~*~*~ATTACK BUTTONS~*~*~*~*~*~*~*~
+
+heroSkills.forEach(button => {
+	button.addEventListener('click', () => {
+		event.preventDefault();
+		skillSelected = true;
+		combatActionObject.skillname = event.target;
+		combatActionObject.playerName = event.target.parentElement.parentElement.querySelector('label').innerText;
+		combatActionObject.playerAP = event.target.parentElement.parentElement.querySelector('[id*="AP"]').innerText;
+		combatActionObject.playerHP = event.target.parentElement.parentElement.querySelector('[id*="HP"]').innerText;
+		let whatUsage = event.target.innerText;
+		findoutSkillType(whatUsage);
+		if(skillType === "self"){
+			whichSkillToUse(combatActionObject.skillname);
+		};
+		if((skillSelected && targetSelected) && (skillType === "enemy")){
+			whichSkillToUse(combatActionObject.skillname);
+		};
+	});
+});
+
+// hsOption4.addEventListener('click', () => {
+// 	event.preventDefault();
+// 	skillSelected = true;
+// 	combatActionObject.skillname = event.target;
+// 	combatActionObject.playerName = event.target.parentElement.parentElement.querySelector('label').innerText;
+// 	if(skillSelected && targetSelected){
+// 		whichSkillToUse(combatActionObject.skillname);
+// 	};
+// });
+
+cs1Option4.addEventListener('click', () => {
+	event.preventDefault();
+	skillSelected = true;
+	combatActionObject.playerName = event.target.parentElement.parentElement.querySelector('label').innerText;
+	if(skillSelected && targetSelected){
+		basicattack.Attack(combatActionObject.wholeTarget.querySelector('p'));
+	};
+});
+cs2Option4.addEventListener('click', () => {
+	event.preventDefault();
+	skillSelected = true;
+	combatActionObject.playerName = event.target.parentElement.parentElement.querySelector('label').innerText;
+	if(skillSelected && targetSelected){
+		basicattack.Attack(combatActionObject.wholeTarget.querySelector('p'));
+	};
+});
+cs3Option4.addEventListener('click', () => {
+	event.preventDefault();
+	skillSelected = true;
+	combatActionObject.playerName = event.target.parentElement.parentElement.querySelector('label').innerText;
+	if(skillSelected && targetSelected){
+		basicattack.Attack(combatActionObject.wholeTarget.querySelector('p'));
+	};
+});
+
+spritesArray.forEach(sprite => {
+	sprite.addEventListener('click', () => {
+		targetSelected = !targetSelected;
+		combatActionObject.wholeTarget = event.target.parentElement;
+		// console.log(combatActionObject.wholeTarget);
+		if(skillSelected && targetSelected){
+			whichSkillToUse(combatActionObject.skillname);
+		};
+	});
+});
+
+
 
 
 
